@@ -1,3 +1,5 @@
+-- FIX: Mason does not work with ARM based CPU's as they get wrong package. Works fine with the rest. 
+-- WARNING: It is required to re-enable mason for non-ARM cpu's. This code will have a HACK tag. I like todo-plugin btw.
 --[[
 
 =====================================================================
@@ -69,19 +71,30 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-'norcalli/nvim-colorizer.lua', --Note, TOGGLED OFF 
+  'norcalli/nvim-colorizer.lua', --Note, TOGGLED OFF 
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  -- NOTE: Personal 
+{
+  "folke/todo-comments.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+},
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs to stdpath for neovim, DOES NOT WORK WITH ARM CPU's?
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      -- WARN: Automatically install LSPs to stdpath for neovim, DOES NOT WORK WITH ARM CPU's?
+      --'williamboman/mason.nvim',
+      --'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -135,7 +148,7 @@ require('lazy').setup({
   },
 
   {
-    -- Add indentation guides even on blank lines -- Works ONLY on the newest NEOVIM VERSION
+    -- Add indentation guides even on blank lines -- WARNING: Works ONLY on the newest NEOVIM VERSION
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
@@ -186,7 +199,7 @@ require('lazy').setup({
   --
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
-  { import = 'custom.plugins' },
+--  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -267,6 +280,7 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
+-- TODO: Learn Telescope bindings
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -282,7 +296,7 @@ vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -428,16 +442,18 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Setup mason so it can manage external tooling
+--[[
+-- WARN: Setup mason so it can manage external tooling
 require('mason').setup()
 
--- Ensure the servers above are installed
+--WARN: Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
+WARN:
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
-
+WARN:
 mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
@@ -447,6 +463,7 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+--]]
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -495,4 +512,17 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
---
+
+--WARN: Lua-Language-Server (Installed from source on ARM). Will require to remove mason.nvim package & uninstall it's packages
+require'lspconfig'.lua_ls.setup{}
+
+--WARN: Bash-Language-Server (Installed from npm). Requires latest stable Nodejs. 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'sh',
+  callback = function()
+    vim.lsp.start({
+      name = 'bash-language-server',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
+})
