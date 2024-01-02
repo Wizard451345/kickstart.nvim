@@ -93,7 +93,7 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- WARN: Automatically install LSPs to stdpath for neovim, DOES NOT WORK WITH ARM CPU's?
-      --'williamboman/mason.nvim',
+      --'williamboman/mason.nvim', --NOTE:.
       --'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
