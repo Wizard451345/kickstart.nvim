@@ -15,6 +15,12 @@ This has:
 
 I am currently doing Lua so I can understand what I am doing, also LSP does not work on my end, likely as a result of using an ARM based computer. Yeah. It is because of ARM :( F
 
+TODO:
+- [ ] Take note of the files in `/lua/*`. There are stuff from there that arre from Packer.nvim. ~ There is no issues as it is not called, just a reminder.
+- [ ] I want there to be an autoformatter. Autocomplete the `{} [] and quotes` maybe I could create a request or something?
+- [ ] Finish organizing plugins and lsp's etc. Into their respective directories.
+- [ ] Watch Primeagen's Nvim video to feel that I know what I am doing. (I don't) 
+
 I am currently practicing git commands right now. This repository has 2 branches. Main and Master. 
 
 - The **Master** Branch is the original Kickstart repo. I am closely following it for any changes. I am thinking on keeping it on sync.
