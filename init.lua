@@ -48,25 +48,26 @@ vim.g.maplocalleader = ' '
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim' -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL  
+if not vim.loop.fs_stat(lazypath) then -- checks if dir exists, if not the do this code
+  vim.fn.system { --vimscript command, gets output of command in string [check :h system]
     'git',
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
     '--branch=stable', -- latest stable release
-    lazypath,
+    lazypath, --clone into lazy path
   }
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath) --rtp/runtimepath, list of dir where nvim is going to look. like PATH. Adds lazypath to PATH
+-- SAME as vim.opt.prepend(vim.opt.rtp, lazypath) (adds to beginning of text) [PRE]
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
-require('lazy').setup({
+require('lazy').setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setup function.
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -81,10 +82,10 @@ require('lazy').setup({
   --
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
-  { import = 'custom.plugins' },
+  { import = 'custom.plugins' }, --tables are in {}
   { import = 'custom.lsp'}
 }, {})
-
+--TODO: options.lua. See Neovim #3 Video
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -126,6 +127,14 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+--NOTE: Personal. Will open new tabs below screeen instead of top.
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+--disable wrapping
+vim.opt.wrap = false
+-- scroll from middle, not at edge
+vim.opt.scrolloff = 999
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -135,6 +144,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.keymap.set('n', '<leader>ff', vim.cmd.Ex, {desc = "File Explorer"})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -165,6 +176,7 @@ pcall(require('telescope').load_extension, 'fzf')
 
 -- TODO: Learn Telescope bindings
 -- See `:help telescope.builtin`
+-- NOTE: Setting keymaps ('mode', 'key', function, description ={''}')
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
@@ -253,8 +265,10 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
+
+
 -- LSP settings.
---  This function gets run when an LSP connects to a particular buffer.
+-- This function gets run when an LSP connects to a particular buffer. 
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -270,6 +284,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
+  -- Makes the following code to work. nmap variable 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
