@@ -1,8 +1,6 @@
 return {
-
---[[
 --WARN: Lua-Language-Server (Installed from source on ARM). Will require to remove mason.nvim package & uninstall it's packages
-require'lspconfig'.lua_ls.setup{}
+require'lspconfig'.lua_ls.setup{},
 
 --WARN: Bash-Language-Server (Installed from npm). Requires latest stable Nodejs. 
 
@@ -15,7 +13,5 @@ vim.api.nvim_create_autocmd('FileType', {
     })
   end,
 })
-
-
---]]
 }
+--I think there is no `require needed here` I did :so here and work?
