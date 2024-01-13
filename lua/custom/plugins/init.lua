@@ -14,7 +14,7 @@ return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- NOTE: Personal 
+  -- NOTE: Personal, sync with GIT please! :) 
   --
   'andweeb/presence.nvim',
 {
@@ -26,6 +26,49 @@ return {
     -- refer to the configuration section below
   },
 },
+
+ -- See :h autoclose.nvim-* 
+{
+  'm4xshen/autoclose.nvim',
+    config = function ()
+      require("autoclose").setup({
+        keys = {
+          ["$"] = { escape = true, close = true, pair = "$$", disabled_filetypes = {} },
+        },
+      })
+    end
+  },
+
+  --see :h bufferline-configuration
+  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function ()
+      require("bufferline").setup{}
+    end
+  },
+
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup ({
+        theme = "hyper",
+        config = {
+          shortcut = {
+            {desc = "Files", group = "Label", action = "Telescope find_files cwd=D:\\", key = "f"},
+            {desc = "Config", action = "e C:\\Users\\marco\\AppData\\Local\\nvim\\init.lua", key = "e"},
+          },
+          project = {
+            enable = "True",
+            action = "Telescope find_files cwd="
+          },
+          week_header = {
+            enable = "true",
+          },
+        },
+      })
+    end,
+  dependencies = { {'nvim-tree/nvim-web-devicons'}}
+  },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -46,7 +89,7 @@ return {
   },
 
   { -- Autocompletion
-    'hrsh7th/nvim-cmp',
+    'hrsh7th/nvim-cmp', --epic auto complete tab
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
@@ -66,11 +109,11 @@ return {
     },
   },
 
-  { -- Theme inspired by Atom
+  { -- Theme inspired by Atom.
     'navarasu/onedark.nvim',
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
+    config = function() -- Makes it more stable. If installed, run function, if not, Lazy install colorscheme, then run config.
+      vim.cmd.colorscheme 'onedark' --NOTE: autorun this command 
     end,
   },
 
@@ -124,7 +167,5 @@ return {
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   },
-
-
 
 }

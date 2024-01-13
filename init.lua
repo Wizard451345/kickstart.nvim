@@ -1,3 +1,5 @@
+-- TODO: move this around later
+
 -- FIX: Mason does not work with ARM based CPU's as they get wrong package. Works fine with the rest. 
 -- WARNING: It is required to re-enable mason for non-ARM cpu's. This code will have a HACK tag. I like todo-plugin btw.
 -- TODO: Thinking on moving plugins and other functions to their respective directory.
@@ -48,25 +50,26 @@ vim.g.maplocalleader = ' '
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim' -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL  
+if not vim.loop.fs_stat(lazypath) then -- checks if dir exists, if not the do this code
+  vim.fn.system { --vimscript command, gets output of command in string [check :h system]
     'git',
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
     '--branch=stable', -- latest stable release
-    lazypath,
+    lazypath, --clone into lazy path
   }
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath) --rtp/runtimepath, list of dir where nvim is going to look. like PATH. Adds lazypath to PATH
+-- SAME as vim.opt.prepend(vim.opt.rtp, lazypath) (adds to beginning of text) [PRE]
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
-require('lazy').setup({
+require('lazy').setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setup function.
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -75,56 +78,18 @@ require('lazy').setup({
 
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
+  --    up-to-date with whatever is in the kickstart repo. Make sure the subdirs are in lua
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   --
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
-  { import = 'custom.plugins' },
-  { import = 'custom.lsp'}
+  { import = 'custom.plugins' }, --tables are in {}
+  { import = 'custom.lsp'} -- is this right?
 }, {})
+--TODO: options.lua. See Neovim #3 Video
 
--- [[ Setting options ]]
--- See `:help vim.o`
-
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Make line numbers default
-vim.wo.number = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+require('custom.options')
 
 -- [[ Basic Keymaps ]]
 
@@ -135,6 +100,14 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- NOTE: Personal
+vim.keymap.set('n', '<leader>ff', vim.cmd.Ex, {desc = "File Explorer"})
+vim.keymap.set('n', '<leader>b', vim.cmd.tabe, {desc = "Open New Buffer"})
+vim.keymap.set('n', '<leader>bn', vim.cmd.tabn, {desc = "Next Buffer"})
+vim.keymap.set('n', '<leader>bp', vim.cmd.tabp, {desc = "Previous Buffer"})
+vim.keymap.set('n', '<leader>bc', vim.cmd.tabc, {desc = "Close Buffer"})
+vim.keymap.set('n', '<leader>h', vim.cmd.Dashboard, {desc = "Open Dashboard"})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -165,6 +138,7 @@ pcall(require('telescope').load_extension, 'fzf')
 
 -- TODO: Learn Telescope bindings
 -- See `:help telescope.builtin`
+-- NOTE: Setting keymaps ('mode', 'key', function, description ={''}')
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
@@ -185,7 +159,7 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim' }, -- FIX: 'help' not availble on WIN
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'html', 'vim' }, -- FIX: 'help' not availble on WIN
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -253,9 +227,12 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
+
+
 -- LSP settings.
---  This function gets run when an LSP connects to a particular buffer.
+-- This function gets run when an LSP connects to a particular buffer. 
 local on_attach = function(_, bufnr)
+
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -270,6 +247,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
+  -- Makes the following code to work. nmap variable 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -304,7 +282,7 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
+   clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
@@ -325,7 +303,7 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-
+--[[
 -- WARN: Setup mason so it can manage external tooling
 require('mason').setup()
 
@@ -336,7 +314,7 @@ local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
--- WARN:
+-- WARN: Server_name? Sounds I could do this manually.
 mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
@@ -395,4 +373,3 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
