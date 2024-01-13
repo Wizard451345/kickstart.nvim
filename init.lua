@@ -101,12 +101,18 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- NOTE: Personal
+-- NOTE: Personal shortcuts
+
+-- File Explorer shortcut
 vim.keymap.set('n', '<leader>ff', vim.cmd.Ex, {desc = "File Explorer"})
+
+-- buffer shortcuts, powered by BufferLine
 vim.keymap.set('n', '<leader>b', vim.cmd.tabe, {desc = "Open New Buffer"})
-vim.keymap.set('n', '<leader>bn', vim.cmd.tabn, {desc = "Next Buffer"})
-vim.keymap.set('n', '<leader>bp', vim.cmd.tabp, {desc = "Previous Buffer"})
-vim.keymap.set('n', '<leader>bc', vim.cmd.tabc, {desc = "Close Buffer"})
+vim.keymap.set('n', '<leader>bn', vim.cmd.BufferLineCycleNext, {desc = "Next Buffer"})
+vim.keymap.set('n', '<leader>bp', vim.cmd.BufferLineCyclePrev, {desc = "Previous Buffer"})
+vim.keymap.set('n', '<leader>bc', vim.cmd.BufferLinePickClose, {desc = "Close Buffer"})
+
+-- Dashboard shortcut
 vim.keymap.set('n', '<leader>h', vim.cmd.Dashboard, {desc = "Open Dashboard"})
 
 -- [[ Highlight on yank ]]
