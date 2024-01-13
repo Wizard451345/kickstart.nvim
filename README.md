@@ -22,8 +22,6 @@ TODO:
 - [x] FOR WINDOWS: I hate Mason beuh. Clangd-LSP does not work for Windows. Not reading header files, likely not reading MSYS stuff. For C/C++ LSP.
   > Note. I had MSYS2 Installed. I COPIED `C:/MSYS64/UCRT64/include` TO `$USER\AppData\Local\nvim-data\mason\packages\clangd\clangd_17.0.3\lib\clang\17\include`
   > I spent too much time to figure this out. PLZ give money
-  > Thinking on removing mason by defualy based on my own workflow. This would require a lot of moving around and comparing configs on my Windows
-    > I just thought of making another branch but that may be too much. Focusing on x64 for now
 - [ ] Watch Primeagen's Nvim video to mak me feel that I know what I am doing. (I don't) 
 
 I am currently practicing git commands right now. This repository has 2 branches. Main and Master. 
