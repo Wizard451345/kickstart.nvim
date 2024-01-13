@@ -70,13 +70,15 @@ return {
   dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
 
+  -- Personal configuration ends here
+  
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- WARN: Automatically install LSPs to stdpath for neovim, DOES NOT WORK WITH ARM CPU's?
-      'williamboman/mason.nvim', --NOTE:.
+      -- WARN: Automatically install LSPs to stdpath for neovim, DOES NOT WORK WITH ARM CPU's :(((
+      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
