@@ -17,12 +17,14 @@ I am currently doing Lua so I can understand what I am doing, also LSP does not 
 
 TODO:
 - [ ] Take note of the files in `/lua/*`. There are stuff from there that arre from Packer.nvim. ~ There is no issues as it is not called, just a reminder.
-- [ ] I want there to be an autoformatter. Autocomplete the `{} [] and quotes` maybe I could create a request or plug-in my own?
+- [x] I want there to be an autoformatter. Autocomplete the `{} [] and quotes` maybe I could create a request or plug-in my own?
+  > Used autoclose.nvim. Still need to tweak a little more. Especially for HTML's' < >.
 - [ ] Finish organizing plugins and lsp's etc. Into their respective directories.
 - [x] FOR WINDOWS: I hate Mason beuh. Clangd-LSP does not work for Windows. Not reading header files, likely not reading MSYS stuff. For C/C++ LSP.
   > Note. I had MSYS2 Installed. I COPIED `C:/MSYS64/UCRT64/include` TO `$USER\AppData\Local\nvim-data\mason\packages\clangd\clangd_17.0.3\lib\clang\17\include`
   > I spent too much time to figure this out. PLZ give money
-- [ ] Watch Primeagen's Nvim video to mak me feel that I know what I am doing. (I don't) 
+  > Configuring to make ARM and x86 more compatible. Mainly by only disabling certain LSP stuff and Dashboard configurations for config files [not commited yet {1/14}]
+- [ ] Watch Primeagen's Nvim video to mak me feel that I know what I am doing. (I don't).
 
 I am currently practicing git commands right now. This repository has 2 branches. Main and Master. 
 
