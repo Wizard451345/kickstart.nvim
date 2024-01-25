@@ -47,3 +47,8 @@ vim.opt.wrap = false
 -- scroll from middle, not at edge
 -- vim.opt.scrolloff = 999
 
+
+ -- WARN: Disables Netrw using custom options. I may have to move to top if no work
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+

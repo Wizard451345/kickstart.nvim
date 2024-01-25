@@ -81,7 +81,37 @@ return {
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
 
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
+  },
   -- Personal configuration ends here
+
+  -- NOTE: This is where your plugins related to LSP can be installed.
+  --  The configuration is done below. Search for lspconfig to find it below.
+  {
+    -- LSP Configuration & Plugins
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      -- Automatically install LSPs to stdpath for neovim
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
+
+      -- Useful status updates for LSP
+      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      { 'j-hui/fidget.nvim', opts = {} },
+
+      -- Additional lua configuration, makes nvim stuff amazing!
+      'folke/neodev.nvim',
+    },
+  },
 
   { -- Autocompletion, UPDATED from fork Jan 19 smth
     'hrsh7th/nvim-cmp', --epic auto complete tab
@@ -183,6 +213,16 @@ return {
       vim.cmd.colorscheme 'onedark' --NOTE: autorun this command 
     end,
   },
+
+  {
+    'sainnhe/everforest',
+    priority = 500,
+    config = function ()
+      vim.cmd.colorscheme 'everforest'
+    end,
+  },
+
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',

@@ -94,6 +94,7 @@ require('custom.options')
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
+-- 1st keymap, sets a silent mapping that does nothing when spacebar is pressed [normal and visal mode]. 
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -110,10 +111,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagn
 -- NOTE: Personal shortcuts
 
 -- File Explorer shortcut
-vim.keymap.set('n', '<leader>ff', vim.cmd.Ex, {desc = "File Explorer"})
+vim.keymap.set('n', '<leader>cP', '<Cmd>:tabe term://powershell<CR>', {desc = "Open PS in new tab"})
+
+vim.keymap.set('n', '<leader>ff', vim.cmd.NvimTreeToggle, {desc = "File Explorer"})
 
 -- buffer shortcuts, powered by BufferLine
-vim.keymap.set('n', '<leader>b', vim.cmd.tabe, {desc = "Open New Buffer"})
+vim.keymap.set('n', '<leader>bN', vim.cmd.tabe, {desc = "Open New Buffer"})
 vim.keymap.set('n', '<leader>bn', vim.cmd.BufferLineCycleNext, {desc = "Next Buffer"})
 vim.keymap.set('n', '<leader>bp', vim.cmd.BufferLineCyclePrev, {desc = "Previous Buffer"})
 vim.keymap.set('n', '<leader>bc', vim.cmd.BufferLinePickClose, {desc = "Close Buffer"})
@@ -136,6 +139,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
+  pickers = {
+    colorscheme ={
+      enable_preview = true, -- Telescope color previews :)
+    }
+  },
   defaults = {
     mappings = {
       i = {
@@ -358,6 +366,7 @@ require('which-key').register {
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  ['<leader>b'] = { name = '[B]uffers', _ = 'which_key_ignore'},
 }
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
