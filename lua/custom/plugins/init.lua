@@ -251,6 +251,9 @@ return {
 
   -- Fuzzy Finder (files, lsp, etc)
   {
+    'nvim-telescope/telescope-ui-select.nvim',
+  },
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {

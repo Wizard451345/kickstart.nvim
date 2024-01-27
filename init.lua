@@ -73,8 +73,8 @@ require('lazy').setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
+   require 'kickstart.plugins.autoformat',
+   require 'kickstart.plugins.debug',
 
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -139,6 +139,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
+  require('telescope').load_extension('ui-select'), --Extension for fancy code_action
   pickers = {
     colorscheme ={
       enable_preview = true, -- Telescope color previews :)
@@ -150,6 +151,11 @@ require('telescope').setup {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
+    },
+  },
+  extensions = {
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown({}),
     },
   },
 }
@@ -329,6 +335,8 @@ local on_attach = function(_, bufnr)
   -- Makes the following code to work. nmap variable 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+--  nmap('<leader>cb', require('dap').toggle_breakpoint, 'DAP: Toggle [B]reakpoint')
+--  nmap('<leader>cc', require('dap').continue, 'DAP: [C]ontinue')
 
   -- FIX: gd GI D
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
@@ -387,7 +395,7 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-
+  html = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
