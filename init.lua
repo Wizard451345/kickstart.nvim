@@ -1,6 +1,6 @@
 -- TODO: move this around later
 
--- FIX: Mason does not work with ARM based CPU's as they get wrong package. Works fine with the rest. 
+-- FIX: Mason does not work with ARM based CPU's as they get wrong package. Works fine with the rest.
 -- WARNING: It is required to re-enable mason for non-ARM cpu's. This code will have a HACK tag. I like todo-plugin btw.
 -- TODO: Thinking on moving plugins and other functions to their respective directory.
 --[[
@@ -50,15 +50,16 @@ vim.g.maplocalleader = ' '
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim' -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL  
-if not vim.loop.fs_stat(lazypath) then -- checks if dir exists, if not the do this code
-  vim.fn.system { --vimscript command, gets output of command in string [check :h system]
+local lazypath = vim.fn.stdpath 'data' ..
+'/lazy/lazy.nvim'                                           -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL
+if not vim.loop.fs_stat(lazypath) then                      -- checks if dir exists, if not the do this code
+  vim.fn.system {                                           --vimscript command, gets output of command in string [check :h system]
     'git',
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
     '--branch=stable', -- latest stable release
-    lazypath, --clone into lazy path
+    lazypath,          --clone into lazy path
   }
 end
 vim.opt.rtp:prepend(lazypath) --rtp/runtimepath, list of dir where nvim is going to look. like PATH. Adds lazypath to PATH
@@ -73,8 +74,8 @@ require('lazy').setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-   require 'kickstart.plugins.autoformat',
-   require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.autoformat',
+  require 'kickstart.plugins.debug',
 
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -85,7 +86,7 @@ require('lazy').setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   { import = 'custom.plugins' }, --tables are in {}
-  { import = 'custom.lsp'} -- is this right?
+  { import = 'custom.lsp' }      -- is this right?
 }, {})
 --TODO: options.lua. See Neovim #3 Video
 
@@ -94,7 +95,7 @@ require('custom.options')
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
--- 1st keymap, sets a silent mapping that does nothing when spacebar is pressed [normal and visal mode]. 
+-- 1st keymap, sets a silent mapping that does nothing when spacebar is pressed [normal and visal mode].
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -111,19 +112,19 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagn
 -- NOTE: Personal shortcuts
 
 -- File Explorer shortcut
-vim.keymap.set('n', '<leader>cP', '<Cmd>:tabe term://powershell<CR>', {desc = "Open PS in new tab"})
+vim.keymap.set('n', '<leader>cP', '<Cmd>:tabe term://powershell<CR>', { desc = "Open PS in new tab" })
 
-vim.keymap.set('n', '<leader>ff', vim.cmd.NvimTreeToggle, {desc = "File Explorer"})
+vim.keymap.set('n', '<leader>ff', vim.cmd.NvimTreeToggle, { desc = "File Explorer" })
 
 -- buffer shortcuts, powered by BufferLine
-vim.keymap.set('n', '<leader>bN', vim.cmd.tabe, {desc = "Open New Buffer"})
-vim.keymap.set('n', '<leader>bn', vim.cmd.BufferLineCycleNext, {desc = "Next Buffer"})
-vim.keymap.set('n', '<leader>bp', vim.cmd.BufferLineCyclePrev, {desc = "Previous Buffer"})
-vim.keymap.set('n', '<leader>bc', vim.cmd.BufferLinePickClose, {desc = "Close Buffer"})
-vim.keymap.set('n', '<leader>bs', vim.cmd.BufferLinePick, {desc = "Select Buffer"})
+vim.keymap.set('n', '<leader>bN', vim.cmd.tabe, { desc = "Open New Buffer" })
+vim.keymap.set('n', '<leader>bn', vim.cmd.BufferLineCycleNext, { desc = "Next Buffer" })
+vim.keymap.set('n', '<leader>bp', vim.cmd.BufferLineCyclePrev, { desc = "Previous Buffer" })
+vim.keymap.set('n', '<leader>bc', vim.cmd.BufferLinePickClose, { desc = "Close Buffer" })
+vim.keymap.set('n', '<leader>bs', vim.cmd.BufferLinePick, { desc = "Select Buffer" })
 
 -- Dashboard shortcut
-vim.keymap.set('n', '<leader>h', vim.cmd.Dashboard, {desc = "Open Dashboard"})
+vim.keymap.set('n', '<leader>H', vim.cmd.Dashboard, { desc = "Open Dashboard" })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -141,7 +142,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('telescope').setup {
   require('telescope').load_extension('ui-select'), --Extension for fancy code_action
   pickers = {
-    colorscheme ={
+    colorscheme = {
       enable_preview = true, -- Telescope color previews :)
     }
   },
@@ -315,9 +316,8 @@ vim.defer_fn(function()
 end, 0)
 
 -- [[Configure LSP]] Moved to its own directory
--- This function gets run when an LSP connects to a particular buffer. 
+-- This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -332,11 +332,11 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  -- Makes the following code to work. nmap variable 
+  -- Makes the following code to work. nmap variable
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
---  nmap('<leader>cb', require('dap').toggle_breakpoint, 'DAP: Toggle [B]reakpoint')
---  nmap('<leader>cc', require('dap').continue, 'DAP: [C]ontinue')
+  --  nmap('<leader>cb', require('dap').toggle_breakpoint, 'DAP: Toggle [B]reakpoint')
+  --  nmap('<leader>cc', require('dap').continue, 'DAP: [C]ontinue')
 
   -- FIX: gd GI D
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
@@ -374,7 +374,7 @@ require('which-key').register {
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-  ['<leader>b'] = { name = '[B]uffers', _ = 'which_key_ignore'},
+  ['<leader>b'] = { name = '[B]uffers', _ = 'which_key_ignore' },
 }
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
@@ -390,7 +390,7 @@ require('which-key').register({
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-   clangd = {},
+  clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
