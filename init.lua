@@ -51,9 +51,9 @@ vim.g.maplocalleader = ' '
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' ..
-'/lazy/lazy.nvim'                                           -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL
-if not vim.loop.fs_stat(lazypath) then                      -- checks if dir exists, if not the do this code
-  vim.fn.system {                                           --vimscript command, gets output of command in string [check :h system]
+    '/lazy/lazy.nvim'                  -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL
+if not vim.loop.fs_stat(lazypath) then -- checks if dir exists, if not the do this code
+  vim.fn.system {                      --vimscript command, gets output of command in string [check :h system]
     'git',
     'clone',
     '--filter=blob:none',
@@ -164,8 +164,6 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
--- FIX: New! From fork repo
-
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
 local function find_git_root()
@@ -217,8 +215,6 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
--- FIX:  New from FORK!
-
 local function telescope_live_grep_open_files()
   require('telescope.builtin').live_grep {
     grep_open_files = true,
@@ -234,8 +230,6 @@ vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-
--- FIX: New From Fork!
 
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -337,8 +331,6 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   --  nmap('<leader>cb', require('dap').toggle_breakpoint, 'DAP: Toggle [B]reakpoint')
   --  nmap('<leader>cc', require('dap').continue, 'DAP: [C]ontinue')
-
-  -- FIX: gd GI D
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
@@ -390,12 +382,14 @@ require('which-key').register({
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  clangd = {},
+  -- NOTE: Disabled clang && lua_ls due to mason package problems
+  -- clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   html = {},
+  --[[
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -404,6 +398,7 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
+  --]]
 }
 
 -- Setup neovim lua configuration
@@ -413,8 +408,7 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
---[[
--- WARN: Setup mason so it can manage external tooling
+-- Setup mason so it can manage external tooling
 require('mason').setup()
 
 -- WARN: Ensure the servers above are installed
@@ -435,7 +429,6 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
---]]
 
 -- [[ Configure nvim-cmp]]
 -- See ` :help cmp`
@@ -455,7 +448,6 @@ cmp.setup {
     completeopt = 'menu,menuone,noinsert',
   },
   mapping = cmp.mapping.preset.insert {
-    -- FIX: Added n p [d to b] from fock
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
