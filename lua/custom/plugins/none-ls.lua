@@ -7,6 +7,7 @@ return {
 		null_ls.setup({
 			sources = {
 				-- Will require MASON
+				-- BUG: stylua does not work via mason >:(
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettier,
 
