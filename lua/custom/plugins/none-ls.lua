@@ -7,8 +7,10 @@ return {
 		null_ls.setup({
 			sources = {
 				-- Will require MASON
-				-- BUG: stylua does not work via mason >:(
+				-- BUG: stylua & all others does not work via mason >:(
+				-- NOTE: for manual installation. stylua is an npm/cargo package. NPM oes ot work
 				null_ls.builtins.formatting.stylua,
+				-- NOTE: for manual installation. stylua is an npm package
 				null_ls.builtins.formatting.prettier,
 
 				null_ls.builtins.diagnostics.cpplint,

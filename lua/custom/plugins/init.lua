@@ -15,6 +15,19 @@ return {
 
   -- NOTE: Personal STARTS HERE! sync with GIT please! :)
 
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true
+  },
+
   "norcalli/nvim-colorizer.lua", --Note, TOGGLED OFF
   "andweeb/presence.nvim",
 

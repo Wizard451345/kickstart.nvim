@@ -9,7 +9,6 @@ This has:
 
 - [x] Everything in Kickstart, including the `Lazy.nvim` package manager.
 - [x] I don't know the rest because I forgot.
-- [ ] Do I know what I am doing?
 
 ## What I am working on right now?
 
@@ -23,7 +22,22 @@ TODO:
 - [x] FOR WINDOWS: I hate Mason beuh. Clangd-LSP does not work for Windows. Not reading header files, likely not reading MSYS stuff. For C/C++ LSP.
   > Note. I had MSYS2 Installed. I COPIED `C:/MSYS64/UCRT64/include` TO `$USER\AppData\Local\nvim-data\mason\packages\clangd\clangd_17.0.3\lib\clang\17\include`
   > I spent too much time to figure this out. PLZ give money
-  > Configuring to make ARM and x86 more compatible. Mainly by only disabling certain LSP stuff and Dashboard configurations for config files [not commited yet {1/14}]
+  > LSP - Lua_LS: For ARM, built from source from [HERE](https://luals.github.io/#neovim-install). After that, add this code to LSP section:
+  ```lua
+  require 'lspconfig'.lua_ls.setup {}
+  ``` 
+  > LSP - BASH: For ARM, installed via the **NPM** package manager. Once installed you can add the following command to the LSP section:
+  ```lua
+  vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'sh',
+  callback = function()
+  vim.lsp.start({
+  name = 'bash-language-server',
+  cmd = { 'bash-language-server', 'start' },
+  })
+  end,
+}  
+  ```
 - [ ] Watch Primeagen's Nvim video to mak me feel that I know what I am doing. (I don't).
 
 I am currently practicing git commands right now. This repository has 2 branches. Main and Master. 
@@ -31,6 +45,8 @@ I am currently practicing git commands right now. This repository has 2 branches
 - The **Master** Branch is the original Kickstart repo. I am closely following it for any changes. I am thinking on keeping it on sync.
 
 - The **Main** Branch is my personal configuration. To be honest, it is very similar to the Master Branch. But with slight personal touches. It is not too special though.
+
+- The **Modular** branch idk, what this was beuh.
 
 I may have been thinking on merging these 2 branches but there is some files that may be in conflict, so for now I will keep it seperate until I feel ready enough.
 
