@@ -46,15 +46,15 @@ vim.g.maplocalleader = " "
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath("data") ..
-"/lazy/lazy.nvim"                                            -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL
-if not vim.loop.fs_stat(lazypath) then                       -- checks if dir exists, if not the do this code
-  vim.fn.system({                                            --vimscript command, gets output of command in string [check :h system]
+    "/lazy/lazy.nvim"                  -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL
+if not vim.loop.fs_stat(lazypath) then -- checks if dir exists, if not the do this code
+  vim.fn.system({                      --vimscript command, gets output of command in string [check :h system]
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
-    lazypath,        --clone into lazy path
+    lazypath,          --clone into lazy path
   })
 end
 vim.opt.rtp:prepend(lazypath) --rtp/runtimepath, list of dir where nvim is going to look. like PATH. Adds lazypath to PATH
@@ -81,7 +81,7 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   { import = "custom.plugins" }, --tables are in {}
-  { import = "custom.lsp" },    -- is this right?
+  { import = "custom.lsp" },     -- is this right?
 }, {})
 --TODO: options.lua. See Neovim #3 Video
 
@@ -376,7 +376,7 @@ require("which-key").register({
 --  the `settings` field of the server config. You must look up that documentation yourself.
 
 local servers = {
-  clangd = {},
+  -- clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
