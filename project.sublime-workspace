@@ -1,0 +1,477 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fun",
+				"function ()"
+			],
+			[
+				"cus",
+				"custom.plugins"
+			],
+			[
+				"cuso",
+				"custom.plugins"
+			],
+			[
+				"reui",
+				"require(modname)"
+			],
+			[
+				"pl",
+				"custom.plugins.none-ls"
+			],
+			[
+				"custom",
+				"custom.options.keymaps"
+			],
+			[
+				"exec",
+				"executable"
+			],
+			[
+				"packa",
+				"packages"
+			],
+			[
+				"conf",
+				"config"
+			],
+			[
+				"funct",
+				"function ()"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "init.lua",
+			"settings":
+			{
+				"buffer_size": 19772,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					49,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAGQVAAAAAAAAGBoAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					50,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAL0dAAAAAAAAAx4AAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					51,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAKYrAAAAAAAAuisAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					52,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAI4rAAAAAAAAlCsAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					53,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAH8rAAAAAAAAnisAAAAAAAAHAAAAICJ0c3giLA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					54,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAG0rAAAAAAAAcysAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					55,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAGArAAAAAAAAeCsAAAAAAAAGAAAAICJnbyIs",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					56,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAFQrAAAAAAAAZSsAAAAAAAAFAAAAICJjIiw",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					57,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAJsrAAAAAAAAoSsAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					58,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAN0rAAAAAAAA4ysAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					59,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAO0rAAAAAAAA8ysAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					62,
+					1,
+					"replaceCharacters",
+					null,
+					"AQAAAL9MAAAAAAAA3UwAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfggAAAAAAAB+CAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"colorsc",
+				"UI: Select Color Scheme"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"LSP",
+				"LSP: Restart Server"
+			],
+			[
+				"LLSP",
+				"LSP: Enable Language Server in Project"
+			],
+			[
+				"lap",
+				"LSP: Enable Language Server in Project"
+			],
+			[
+				"Insta",
+				"Package Control: Install Package"
+			],
+			[
+				"lsp",
+				"Package Control: List Packages"
+			],
+			[
+				"DIFF",
+				"Diffable: Compare Inline"
+			],
+			[
+				"Diff",
+				"Diffable: Compare Inline"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Setti",
+				"Preferences: Package Control Settings"
+			],
+			[
+				"",
+				"CompareBuff: compare with..."
+			],
+			[
+				"compa",
+				"CompareBuff: compare with..."
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Code/Git",
+		"/D/Code/Git/kickstart.nvim",
+		"/D/Code/Git/kickstart.nvim/lua",
+		"/D/Code/Git/kickstart.nvim/lua/custom",
+		"/D/Code/Git/kickstart.nvim/lua/custom/plugins"
+	],
+	"file_history":
+	[
+		"/D/Code/Git/kickstart.nvim/lua/custom/plugins/none-ls.lua",
+		"/C/Users/marco/AppData/Local/nvim/init.lua",
+		"/D/Code/Git/kickstart.nvim/lua/custom/plugins/init.lua",
+		"/C/Users/marco/AppData/Local/nvim/lua/custom/plugins/init.lua",
+		"/C/Users/marco/AppData/Local/nvim/lua/custom/plugins/none-ls.lua",
+		"/D/Code/WebDev/index.html",
+		"/D/Code/Git/kickstart.nvim/init.lua",
+		"/D/Code/Git/kickstart.nvim/.gitignore",
+		"/Y/git/neovim-yt/neovim/custom/lua/custom/lsp/init.lua",
+		"/C/Users/marco/AppData/Local/nvim/lua/custom/lsp/init.lua",
+		"/Y/git/neovim-yt/neovim/custom/lua/custom/plugins/cmp-setup.lua",
+		"/Y/git/neovim-yt/neovim/custom/init.lua",
+		"/Y/git/neovim-yt/neovim/custom/lua/custom/plugins/telescope-setup.lua",
+		"/Y/git/neovim-yt/neovim/custom/lua/custom/options/keymaps.lua",
+		"/D/Code/Git/kickstart.nvim/lua/custom/options/init.lua",
+		"/C/Users/marco/AppData/Local/nvim/lua/custom/plugins/dap.lua",
+		"/C/Users/marco/AppData/Local/nvim-data/mason/packages/codelldb/mason-receipt.json",
+		"/C/Users/marco/AppData/Local/nvim-data/mason/share/mason-schemas/lsp/lua-language-server.json",
+		"/C/Users/marco/AppData/Local/nvim/lua/custom/options/init.lua",
+		"/C/Users/marco/AppData/Local/nvim/lua/plugins/init.lua",
+		"/C/Users/marco/AppData/Local/nvim-data/mason/packages/codelldb/extension/README.md",
+		"/C/Users/marco/OneDrive/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1",
+		"/C/Users/marco/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
+		"/C/Users/marco/AppData/Local/nvim-data/mason/packages/clangd/mason-receipt.json",
+		"/C/Users/marco/AppData/Local/nvim-data/mason/packages/clangd/mason-schemas/lsp.json",
+		"/C/Users/marco/AppData/Local/nvim-data/mason/packages/clangd/clangd_17.0.3/lib/clang/17/include/stdio.h",
+		"/C/Users/marco/AppData/Local/nvim-data/mason/packages/clangd/clangd_17.0.3/lib/clang/17/include/stdint.h",
+		"/Z/git/neovim-yt/neovim/custom/init.lua"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "init.lua",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19772,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1492,
+								1495
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								}
+							],
+							"lsp_active": true,
+							"lsp_hover_provider_count": 1,
+							"lsp_uri": "file:///D:/Code/Git/kickstart.nvim/init.lua",
+							"show_definitions": false,
+							"syntax": "Packages/Lua/Lua.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 0.0
+	},
+	"output.diagnostics":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 96.0
+	},
+	"pinned_build_system": "",
+	"project": "project.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 256.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

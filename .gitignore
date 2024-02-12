@@ -1,3 +1,4 @@
 #ignores lazy-lock.json
 /lazy-lock.json
 /.luarc.json
+/project.sublime-project

@@ -45,16 +45,15 @@ vim.g.maplocalleader = " "
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
-local lazypath = vim.fn.stdpath("data") ..
-    "/lazy/lazy.nvim"                  -- Local Var `lazypath`, VIM FUNC path of data.[nvim-data dir WIN] .. is concat[JOIN] PATH TO INSTALL
-if not vim.loop.fs_stat(lazypath) then -- checks if dir exists, if not the do this code
-  vim.fn.system({                      --vimscript command, gets output of command in string [check :h system]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
-    lazypath,          --clone into lazy path
+    lazypath,        --clone into lazy path
   })
 end
 vim.opt.rtp:prepend(lazypath) --rtp/runtimepath, list of dir where nvim is going to look. like PATH. Adds lazypath to PATH
@@ -81,7 +80,7 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   { import = "custom.plugins" }, --tables are in {}
-  { import = "custom.lsp" },     -- is this right?
+  { import = "custom.lsp" },    -- is this right?
 }, {})
 --TODO: options.lua. See Neovim #3 Video
 
@@ -122,6 +121,47 @@ vim.keymap.set("n", "<leader>bs", vim.cmd.BufferLinePick, { desc = "Select Buffe
 -- Dashboard shortcut
 vim.keymap.set("n", "<leader>H", vim.cmd.Dashboard, { desc = "Open Dashboard" })
 
+-- Harpoon shortcuts
+local harpoon = require("harpoon")
+
+harpoon:setup({})
+
+-- basic telescope configuration
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+  local file_paths = {}
+  for _, item in ipairs(harpoon_files.items) do
+    table.insert(file_paths, item.value)
+  end
+
+  require("telescope.pickers")
+      .new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+          results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+      })
+      :find()
+end
+
+vim.keymap.set("n", "<leader>cH", function()
+  toggle_telescope(harpoon:list())
+end, { desc = "Open harpoon window" })
+vim.keymap.set("n", "<leader>cA", function()
+  harpoon:list():append()
+end, { desc = "Harpoon Mark File" })
+-- vim.keymap.set("n", "<leader>cH", function()
+--  harpoon.ui:toggle_quick_menu(harpoon:list())
+-- end, { desc = "Harpoon Menu" })
+vim.keymap.set("n", "<leader><Left>", function()
+  harpoon:list():prev()
+end, { desc = "Harpoon CyclePrev" })
+vim.keymap.set("n", "<leader><Right>", function()
+  harpoon:list():next()
+end, { desc = "Harpoon CycleNext" })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
@@ -160,6 +200,8 @@ require("telescope").setup({
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
 
+-- NOTE: Personal
+pcall(require("telescope").load_extension("noice"))
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
 local function find_git_root()
@@ -234,7 +276,20 @@ vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = 
 vim.defer_fn(function()
   require("nvim-treesitter.configs").setup({
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "tsx", "html", "vim", "vimdoc", "bash" },
+    ensure_installed = {
+      "c",
+      "cpp",
+      "markdown",
+      "lua",
+      "python",
+      "rust",
+      "markdown_inline",
+      "html",
+      "vim",
+      "vimdoc",
+      "bash",
+      "regex",
+    },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -473,6 +528,8 @@ cmp.setup({
     { name = "path" },
   },
 })
+
+require("colorizer").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -15,20 +15,19 @@ return {
 
   -- NOTE: Personal STARTS HERE! sync with GIT please! :)
 
-
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim",  -- required
+      "nvim-lua/plenary.nvim", -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
       -- Only one of these is needed, not both.
       "nvim-telescope/telescope.nvim", -- optional
     },
-    config = true
+    config = true,
   },
 
-  "norcalli/nvim-colorizer.lua", --Note, TOGGLED OFF
+  "norcalli/nvim-colorizer.lua",
   "andweeb/presence.nvim",
 
   {
@@ -88,6 +87,7 @@ return {
             },
             {
               desc = "Config [WIN]",
+              -- action "e " .. os.getenv("HOMEPATH") .. "\\AppData\\Local\\nvim\\init.lua"
               action = "e C:\\Users\\marco\\AppData\\Local\\nvim\\init.lua",
               key = "e",
             },
@@ -121,7 +121,49 @@ return {
       })
     end,
   },
-  -- Personal configuration ends here
+  -- lazy.nvim
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,       -- add a border to hover docs and signature help
+        },
+      })
+    end,
+  },
+
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  -- NOTE: Personal configuration ends here
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -142,7 +184,7 @@ return {
     },
   },
 
-  {                     -- Autocompletion, UPDATED from fork Jan 19 smth
+  {                   -- Autocompletion, UPDATED from fork Jan 19 smth
     "hrsh7th/nvim-cmp", --epic auto complete tab
     dependencies = {
       -- Snippet Engine & its associtaed nvim-cmp source
@@ -237,20 +279,27 @@ return {
   { -- Theme inspired by Atom.
     "navarasu/onedark.nvim",
     priority = 1000,
-    config = function()              -- Makes it more stable. If installed, run function, if not, Lazy install colorscheme, then run config.
-      vim.cmd.colorscheme("onedark") --NOTE: autorun this command
-    end,
+    -- config = function()           
+    --   vim.cmd.colorscheme("onedark")
+    -- end,
   },
 
   {
     "sainnhe/everforest",
     priority = 500,
-    config = function()
-      vim.cmd.colorscheme("everforest")
-    end,
+    -- config = function()
+    -- vim.cmd.colorscheme("everforest")
+    -- end,
   },
 
-  { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("catppuccin-mocha") --NOTE: autorun this command
+    end
+  },
 
   { -- Set lualine as statusline
     "nvim-lualine/lualine.nvim",
