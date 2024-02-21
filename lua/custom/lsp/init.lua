@@ -1,3 +1,4 @@
+-- NOTE: ADDED Clangd LSPCONFIG
 return {
 
   -- NOTE: This is where your plugins related to LSP can be installed.
@@ -21,8 +22,11 @@ return {
   --WARN: Lua-Language-Server (Installed from source on ARM). Will require to remove mason.nvim package & uninstall it's packages
   require 'lspconfig'.lua_ls.setup {},
 
-  --WARN: Bash-Language-Server (Installed from npm). Requires latest stable Nodejs.
+  --WARN: Clangd-Language-Server (From local package manager)
+  require 'lspconfig'.clangd.setup {},
 
+  --WARN: Bash-Language-Server (Installed from npm). Requires latest stable Nodejs.
+  --NOTE: I may have done this the hard way...
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'sh',
     callback = function()
@@ -34,3 +38,5 @@ return {
   })
 
 }
+
+-- vim: ts=2 sts=2 sw=2 et

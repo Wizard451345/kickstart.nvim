@@ -1,39 +1,7 @@
 --[[
-
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-
-Kickstart.nvim is *not* a distribution.
-
-Kickstart.nvim is a template for your own configuration.
-  The goal is that you can read every line of code, top-to-bottom, and understand
-  what your configuration is doing.
-
-  Once you've done that, you should start exploring, configuring and tinkering to
-  explore Neovim!
-
-  If you don't know anything about Lua, I recommend taking some time to read through
-  a guide. One possible example:
+  READ:
   - https://learnxinyminutes.com/docs/lua/
-
-  And then you can explore or search through `:help lua-guide`
-
-
-Kickstart Guide:
-
-I have left several `:help X` comments throughout the init.lua
-You should run that command and read that help section for more information.
-
-In addition, I have some `NOTE:` items throughout the file.
-These are for you, the reader to help understand what is happening. Feel free to delete
-them once you know what you're doing, but they should serve as a guide for when you
-are first encountering a few different constructs in your nvim config.
-
-I hope you enjoy your Neovim journey,
-- TJ
-
-P.S. You can delete this when you're done too. It's your config now :)
+  `:help lua-guide`
 --]]
 
 -- Set <space> as the leader key
@@ -53,7 +21,7 @@ if not vim.loop.fs_stat(lazypath) then
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
-    lazypath,        --clone into lazy path
+    lazypath,          --clone into lazy path
   })
 end
 vim.opt.rtp:prepend(lazypath) --rtp/runtimepath, list of dir where nvim is going to look. like PATH. Adds lazypath to PATH
@@ -80,16 +48,16 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   { import = "custom.plugins" }, --tables are in {}
-  { import = "custom.lsp" },    -- is this right?
+  { import = "custom.lsp" },     -- is this right?
 }, {})
---TODO: options.lua. See Neovim #3 Video
 
+--TODO: options.lua. See Neovim #3 Video
 require("custom.options")
 
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
--- 1st keymap, sets a silent mapping that does nothing when spacebar is pressed [normal and visal mode].
+-- 1st keymap, sets a silent mapping that does nothing when spacebar is pressed [normal and visual mode].
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
@@ -161,6 +129,13 @@ end, { desc = "Harpoon CyclePrev" })
 vim.keymap.set("n", "<leader><Right>", function()
   harpoon:list():next()
 end, { desc = "Harpoon CycleNext" })
+
+-- Neogit
+local neogit = require("neogit")
+vim.keymap.set("n", "<leader>gO", function()
+  neogit.open({ kind = "split" })
+end, { desc = "Open Neogit" })
+-- NOTE: End of personal shortcuts
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -529,6 +504,7 @@ cmp.setup({
   },
 })
 
+-- NOTE: Personal. Runs Colorizer
 require("colorizer").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`

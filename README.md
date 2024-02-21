@@ -1,5 +1,5 @@
 # This is my personal Neovim configuration.
-## Copied from Kickstartt.nvim with some personal configurations
+## Copied from Kickstart.nvim with some personal configurations
 
 This is also the first time doing a Markdown file with my blood, sweat and tears so... IDK.
 
@@ -26,6 +26,7 @@ TODO:
   ```lua
   require 'lspconfig'.lua_ls.setup {}
   ``` 
+   > this can actually work with most languages as well! 
   > LSP - BASH: For ARM, installed via the **NPM** package manager. Once installed you can add the following command to the LSP section:
   ```lua
   vim.api.nvim_create_autocmd('FileType', {
@@ -36,19 +37,20 @@ TODO:
   cmd = { 'bash-language-server', 'start' },
   })
   end,
-}  
+  }  
   ```
-- [ ] Watch Primeagen's Nvim video to mak me feel that I know what I am doing. (I don't).
 
-I am currently practicing git commands right now. This repository has 2 branches. Main and Master. 
+I am currently practicing git commands right now. This repository has 3 branches. Main, Master and Modular. 
 
 - The **Master** Branch is the original Kickstart repo. I am closely following it for any changes. I am thinking on keeping it on sync.
 
 - The **Main** Branch is my personal configuration. To be honest, it is very similar to the Master Branch. But with slight personal touches. It is not too special though.
 
-- The **Modular** branch idk, what this was beuh.
+- The **Modular** branch idk. I gave up on this. May do something with this later.
 
-I may have been thinking on merging these 2 branches but there is some files that may be in conflict, so for now I will keep it seperate until I feel ready enough.
+- Not Implemented yet. I am thinking on creating another branch for Windows, as I also use it and it usally conflicts!
+
+There are some things that could be required, will depend on which OS you use! Run `:checkhealth` and `:messages` when needed. 
 
 ## My Main goals with this project
 

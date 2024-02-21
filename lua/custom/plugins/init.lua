@@ -18,11 +18,10 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
-      -- Only one of these is needed, not both.
-      "nvim-telescope/telescope.nvim", -- optional
+      "nvim-telescope/telescope.nvim",
     },
     config = true,
   },
@@ -46,7 +45,7 @@ return {
     config = function()
       require("autoclose").setup({
         keys = {
-          ["$"] = { escape = true, close = true, pair = "$$", disabled_filetypes = {} },
+          -- ["$"] = { escape = true, close = true, pair = "$$", disabled_filetypes = {} },
         },
       })
     end,
@@ -184,7 +183,7 @@ return {
     },
   },
 
-  {                   -- Autocompletion, UPDATED from fork Jan 19 smth
+  {                     -- Autocompletion, UPDATED from fork Jan 19 smth
     "hrsh7th/nvim-cmp", --epic auto complete tab
     dependencies = {
       -- Snippet Engine & its associtaed nvim-cmp source
@@ -201,7 +200,7 @@ return {
   },
 
   -- Useful plugin to show you pending keybinds.
-  { "folke/which-key.nvim", opts = {} },
+  { "folke/which-key.nvim",  opts = {} },
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes. APPEARS AT LUALINE
     "lewis6991/gitsigns.nvim",
     opts = {
@@ -279,7 +278,7 @@ return {
   { -- Theme inspired by Atom.
     "navarasu/onedark.nvim",
     priority = 1000,
-    -- config = function()           
+    -- config = function()
     --   vim.cmd.colorscheme("onedark")
     -- end,
   },
@@ -307,7 +306,7 @@ return {
     opts = {
       options = {
         icons_enabled = false,
-        theme = "onedark",
+        theme = "auto",
         component_separators = "|",
         section_separators = "",
       },
@@ -361,3 +360,5 @@ return {
     build = "TSUpdate",
   },
 }
+
+-- vim: ts=2 sts=2 sw=2 et
