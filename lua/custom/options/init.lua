@@ -47,8 +47,21 @@ vim.opt.wrap = false
 -- scroll from middle, not at edge
 -- vim.opt.scrolloff = 999
 
-
- -- WARN: Disables Netrw using custom options. I may have to move to top if no work
+-- WARN: Disables Netrw using custom options. I may have to move to top if no work
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Sets how neovim will display certain whitespace in the editor.
+--  See :help 'list'
+--  and :help 'listchars'
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+
+-- Show which line your cursor is open
+vim.opt.cursorline = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10

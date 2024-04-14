@@ -1,0 +1,24 @@
+{
+	"folders":
+	[
+		{
+			"path": "D:\\Code\\Git"
+		}
+	],
+	"settings":
+	{
+		"LSP":
+		{
+			"LSP-lua":
+			{
+				"settings":
+				{
+					"Lua.diagnostics.globals":
+					[
+						"vim"
+					]
+				}
+			}
+		}
+	}
+}

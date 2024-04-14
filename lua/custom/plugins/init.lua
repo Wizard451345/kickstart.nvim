@@ -4,165 +4,12 @@
 -- See the kickstart.nvim README for more information
 return {
 
-  -- NOTE: First, some plugins that don't require any configuration
-
   -- Git related plugins
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
+  -- "tpope/vim-fugitive",
+  -- "tpope/vim-rhubarb",
 
   -- Detect tabstop and shiftwidth automatically
   "tpope/vim-sleuth",
-
-  -- NOTE: Personal STARTS HERE! sync with GIT please! :)
-
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",  -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-
-      "nvim-telescope/telescope.nvim",
-    },
-    config = true,
-  },
-
-  "norcalli/nvim-colorizer.lua",
-  "andweeb/presence.nvim",
-
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-  },
-
-  -- See :h autoclose.nvim-*
-  {
-    "m4xshen/autoclose.nvim",
-    config = function()
-      require("autoclose").setup({
-        keys = {
-          -- ["$"] = { escape = true, close = true, pair = "$$", disabled_filetypes = {} },
-        },
-      })
-    end,
-  },
-
-  --see :h bufferline-configuration
-  --TODO: buffer or tab?
-  {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("bufferline").setup({
-        options = {
-          mode = "buffers",
-          numbers = "ordinal",
-        },
-      })
-    end,
-  },
-
-  {
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    config = function()
-      require("dashboard").setup({
-        theme = "hyper",
-        shortcut_type = "number",
-        config = {
-          shortcut = {
-
-            --Used my personal directory,$USER did not work. -- Compare GIT before changing
-            {
-              desc = "Files [WIN]",
-              group = "Label",
-              action = "Telescope find_files cwd=D:\\",
-              key = "f",
-            },
-            {
-              desc = "Config [WIN]",
-              -- action "e " .. os.getenv("HOMEPATH") .. "\\AppData\\Local\\nvim\\init.lua"
-              action = "e C:\\Users\\marco\\AppData\\Local\\nvim\\init.lua",
-              key = "e",
-            },
-            { desc = "Config [LIN]", action = "e ~/config/nvim/init.lua", key = "E" },
-          },
-          project = {
-            enable = "True",
-            action = "Telescope find_files cwd=",
-          },
-          week_header = {
-            enable = "true",
-          },
-        },
-      })
-    end,
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup({
-        view = {
-          side = "right", -- I like it to show on right. Like a boss
-        },
-      })
-    end,
-  },
-  -- lazy.nvim
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
-    config = function()
-      require("noice").setup({
-        lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-          },
-        },
-        -- you can enable a preset for easier configuration
-        presets = {
-          bottom_search = true,         -- use a classic bottom cmdline for search
-          command_palette = true,       -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,       -- add a border to hover docs and signature help
-        },
-      })
-    end,
-  },
-
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  -- NOTE: Personal configuration ends here
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -183,23 +30,66 @@ return {
     },
   },
 
-  {                     -- Autocompletion, UPDATED from fork Jan 19 smth
-    "hrsh7th/nvim-cmp", --epic auto complete tab
-    dependencies = {
-      -- Snippet Engine & its associtaed nvim-cmp source
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
+  -- [[ Configure nvim-cmp]]
+  -- See ` :help cmp`
+  config = function()
+    local cmp = require("cmp")
+    local luasnip = require("luasnip")
+    luasnip.config.setup({})
 
-      -- Adds LSP Stuff!
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
+    require("luasnip.loaders.from_vscode").lazy_load()
 
-      -- Adds a number of user-friendly snippets
-      "rafamadriz/friendly-snippets",
-    },
-  },
+    cmp.setup({
+      snippet = {
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
+      },
+      completion = {
+        completeopt = "menu,menuone,noinsert",
+      },
+      mapping = cmp.mapping.preset.insert({
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete({}),
+        ["<CR>"] = cmp.mapping.confirm({ --Master is C-y
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_locally_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        -- Shift Tab
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.locally_jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+      }),
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "path" },
+      },
+    })
+  end,
+  -- TODO: Should I add nvim-cmp here?
 
   -- Useful plugin to show you pending keybinds.
+  -- NOTE: Registers are in main init.lua
+  -- TODO: MOVE registers here
   { "folke/which-key.nvim",  opts = {} },
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes. APPEARS AT LUALINE
     "lewis6991/gitsigns.nvim",
@@ -212,6 +102,7 @@ return {
         topdelete = { text = "‾" },
         changedelete = { text = "~" },
       },
+      -- WARN: Master removed these! I still kinda used it?
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
@@ -296,8 +187,8 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("catppuccin-mocha") --NOTE: autorun this command
-    end
+      vim.cmd.colorscheme("catppuccin-mocha")
+    end,
   },
 
   { -- Set lualine as statusline
@@ -311,54 +202,198 @@ return {
         section_separators = "",
       },
     },
-  },
-
-  {
-    -- Add indentation guides even on blank lines -- WARNING: Works ONLY on the newest NEOVIM VERSION
-    "lukas-reineke/indent-blankline.nvim",
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
-    main = "ibl",
-    opts = {},
-  },
-
-  -- "gc" to comment visual regions/lines
+  }, -- "gc" to comment visual regions/lines
   { "numToStr/Comment.nvim", opts = {} },
 
-  -- Fuzzy Finder (files, lsp, etc)
   {
-    "nvim-telescope/telescope-ui-select.nvim",
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        -- NOTE: If you are having trouble with this installation,
-        --       refer to the README for telescope-fzf-native for more instructions.
-
-        -- build = "make -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-        build = "make",
-        cond = function()
-          return vim.fn.executable("make") == 1
-        end,
-      },
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      signs = false,
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
     },
   },
 
-  {
-    -- Highlight, edit, and navigate code
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-    build = "TSUpdate",
+  { -- Collection of various small independent plugins/modules
+    "echasnovski/mini.nvim",
+    config = function()
+      -- Better Around/Inside textobjects
+      --
+      -- Examples:
+      --  - va)  - [V]isually select [A]round [)]paren
+      --  - yinq - [Y]ank [I]nside [N]ext [']quote
+      --  - ci'  - [C]hange [I]nside [']quote
+      require("mini.ai").setup({ n_lines = 500 })
+
+      -- Add/delete/replace surroundings (brackets, quotes, etc.)
+      --
+      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+      -- - sd'   - [S]urround [D]elete [']quotes
+      -- - sr)'  - [S]urround [R]eplace [)] [']
+      require("mini.surround").setup()
+
+      -- Simple and easy statusline.
+      --  You could remove this setup call if you don't like it,
+      --  and try some other statusline plugin
+      local statusline = require("mini.statusline")
+      -- set use_icons to true if you have a Nerd Font
+      statusline.setup({ use_icons = vim.g.have_nerd_font })
+
+      -- You can configure sections in the statusline by overriding their
+      -- default behavior. For example, here we set the section for
+      -- cursor location to LINE:COLUMN
+      ---@diagnostic disable-next-line: duplicate-set-field
+      statusline.section_location = function()
+        return "%2l:%-2v"
+      end
+
+      -- ... and there is more!
+      --  Check out: https://github.com/echasnovski/mini.nvim
+    end,
   },
+
+  -- NOTE: Personal STARTS HERE! sync with GIT please! :)
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      "nvim-telescope/telescope.nvim",
+    },
+    -- config = true,
+    config = function ()
+      -- Neogit and Shortcut
+      local neogit = require("neogit")
+      vim.keymap.set("n", "<leader>gO", function()
+        neogit.open({ kind = "split" })
+      end, { desc = "Open Neogit" })
+    end
+  },
+
+  "norcalli/nvim-colorizer.lua",
+  "andweeb/presence.nvim",
+
+  -- See :h autoclose.nvim-*
+  {
+    "m4xshen/autoclose.nvim",
+    config = function()
+      require("autoclose").setup({
+        keys = {
+          -- ["$"] = { escape = true, close = true, pair = "$$", disabled_filetypes = {} },
+        },
+      })
+    end,
+  },
+
+  {
+    --see :h bufferline-configuration
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("bufferline").setup({
+        options = {
+          mode = "buffers", -- Changed from tabs.
+          numbers = "ordinal",
+        },
+      })
+    end,
+  },
+
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    config = function()
+      require("dashboard").setup({
+        theme = "hyper",
+        shortcut_type = "number",
+        config = {
+          shortcut = {
+
+            --Used my personal directory,$USER did not work. -- Compare GIT before changing
+            {
+              desc = "Files [WIN]",
+              group = "Label",
+              action = "Telescope find_files cwd=D:\\",
+              key = "f",
+            },
+            {
+              desc = "Config [WIN]",
+              -- action "e " .. os.getenv("HOMEPATH") .. "\\AppData\\Local\\nvim\\init.lua"
+              action = "e C:\\Users\\marco\\AppData\\Local\\nvim\\init.lua",
+              key = "e",
+            },
+            { desc = "Config [LIN]", action = "e ~/config/nvim/init.lua", key = "E" },
+          },
+          project = {
+            enable = "True",
+            action = "Telescope find_files cwd=",
+          },
+          week_header = {
+            enable = "true",
+          },
+        },
+      })
+    end,
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup({
+        view = {
+          side = "right", -- I like it to show on right. Like a boss
+        },
+      })
+    end,
+  },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true,    -- use a classic bottom cmdline for search
+          command_palette = true,  -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false,      -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,  -- add a border to hover docs and signature help
+        },
+      })
+    end,
+  },
+
+  -- NOTE: Personal configuration ends here
 }
-
 -- vim: ts=2 sts=2 sw=2 et
