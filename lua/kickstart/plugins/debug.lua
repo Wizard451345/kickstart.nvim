@@ -12,7 +12,7 @@ return {
 		-- Creates a beautiful debugger UI
 		"rcarriga/nvim-dap-ui",
 		-- Require dependency for nvim-dap-ui
-		"rcarriga/nvim-nio",
+		"nvim-neotest/nvim-nio",
 		-- Installs the debug adapters for you
 		"williamboman/mason.nvim",
 		"jay-babu/mason-nvim-dap.nvim",
