@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazyrepo,
     lazypath,
   })
-end
+end ---@diagnositc disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath) --rtp/runtimepath, list of dir where nvim is going to look. like PATH. Adds lazypath to PATH
 -- SAME as vim.opt.prepend(vim.opt.rtp, lazypath) (adds to beginning of text) [PRE]
 

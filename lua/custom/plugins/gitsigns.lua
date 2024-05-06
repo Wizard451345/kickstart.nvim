@@ -10,6 +10,7 @@ return {
         topdelete = { text = "‾" },
         changedelete = { text = "~" },
       },
+      --[[
       -- WARN: Master removed these! I still kinda used it?
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
@@ -71,6 +72,7 @@ return {
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "select git hunk" })
       end,
+      --]]
     },
   },
 }

@@ -12,9 +12,11 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
   --
   -- Best way to modularize config. Imports lua/config/plugins/*.lua
 
-  -- Detect tabstop and shiftwidth automatically
-  "tpope/vim-sleuth",
+  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
+  -- `opts = {}` forces plguin to load
+
+  -- "gc" to comment visual regions/lines!
   { "numToStr/Comment.nvim", opts = {} },
 
   --TODO: ADD EACH FILE? NO INIT?? OR MAKE "REQUIRES" in PLGUINS/INIT
