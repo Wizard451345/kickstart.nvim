@@ -199,7 +199,13 @@ return {
 			}
 			-- WARN: Verify that this command is in right spot, and comment if Mason works
 			-- out of the box!
-			require("lspconfig").lua_ls.setup({})
+			require("lspconfig").lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = { disable = { "missing-fields" } },
+					},
+				},
+			})
 			-- Ensure the servers and tools above are installed
 			--  To check the current status of installed tools and/or manually install
 			--  other tools, you can run
