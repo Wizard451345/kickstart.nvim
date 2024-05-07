@@ -1,4 +1,4 @@
--- NOTE: ADDED NEW MASTER CHANGES
+-- TODO: ADD lspconfig command, manually w/o Mason
 --
 -- Provides go to definition
 -- Find references
