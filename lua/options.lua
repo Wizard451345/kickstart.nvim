@@ -72,3 +72,5 @@ vim.opt.hlsearch = false
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+--See treesitter for folding
