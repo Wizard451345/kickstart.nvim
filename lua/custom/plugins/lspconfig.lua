@@ -178,23 +178,28 @@ return {
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				-- tsserver = {},
 				--
+				-- BUG: Unsupported with Android, testing if it works out of the box on Linux again.
+				-- May need to install manually as shown in MY README! Or install from source and use the cmd option below!
 
-				lua_ls = {
-					-- cmd = {...},
-					-- filetypes = { ...},
-					-- capabilities = {},
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							-- diagnostics = { disable = { 'missing-fields' } },
-						},
-					},
-				},
+				-- NOTE: Use `gc` in Visual to uncomment!
+				-- lua_ls = {
+				-- 	-- cmd = {...},
+				-- 	-- filetypes = { ...},
+				-- 	-- capabilities = {},
+				-- 	settings = {
+				-- 		Lua = {
+				-- 			completion = {
+				-- 				callSnippet = "Replace",
+				-- 			},
+				-- 			-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+				-- 			-- diagnostics = { disable = { 'missing-fields' } },
+				-- 		},
+				-- 	},
+				-- },
 			}
-
+			-- WARN: Verify that this command is in right spot, and comment if Mason works
+			-- out of the box!
+			require("lspconfig").lua_ls.setup({})
 			-- Ensure the servers and tools above are installed
 			--  To check the current status of installed tools and/or manually install
 			--  other tools, you can run
@@ -228,4 +233,3 @@ return {
 }
 
 -- vim: ts=2 sts=2 sw=2 et
-

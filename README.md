@@ -17,10 +17,9 @@ I am currently doing Lua so I can understand what I am doing, also LSP does not 
 TODO:
 - [ ] I now feel that I should make this repo as my own now, I feel like I am now 'smart enough' to at least edit this configuration on my own.
   I want to say thanks to TJ for helping me learn this. :) 
-- [ ] Take note of the files in `/lua/*`. There are stuff from there that arre from Packer.nvim. ~ There is no issues as it is not called, just a reminder.
 - [x] I want there to be an autoformatter. Autocomplete the `{} [] and quotes` maybe I could create a request or plug-in my own?
   > Used autoclose.nvim. Still need to tweak a little more. Especially for HTML's' < >.
-- [ ] Finish organizing plugins and lsp's etc. Into their respective directories. Especially now that I know how most things work.
+- [x] Finish organizing plugins and lsp's etc. Into their respective directories. Especially now that I know how most things work.
 - [x] FOR WINDOWS: I hate Mason beuh. Clangd-LSP does not work for Windows. Not reading header files, likely not reading MSYS stuff. For C/C++ LSP.
   > Note. I had MSYS2 Installed. I COPIED `C:/MSYS64/UCRT64/include` TO `$USER\AppData\Local\nvim-data\mason\packages\clangd\clangd_17.0.3\lib\clang\17\include`
   > I spent too much time to figure this out. PLZ give money
@@ -44,11 +43,11 @@ TODO:
 
 I am currently practicing git commands right now. This repository has 3 branches. Main, Master and Modular. 
 
-- The **Master** Branch is the original Kickstart repo. I am closely following it for any changes. I am thinking on keeping it on sync.
+- The **Master** Branch is the original Kickstart repo. Keeping it on sync, whenever I have the chance. 
 
 - The **Main** Branch is my personal configuration. To be honest, it is very similar to the Master Branch. But with slight personal touches. It is not too special though.
 
-- The **Modular** branch idk. I gave up on this. May do something with this later.
+- The **Simple** branch is basically the Master (original) Branch. Single file, but my my own plugins and options. Why? idk.
 
 - Not Implemented yet. I am thinking on creating another branch for Windows, as I also use it and it usally conflicts!
 
