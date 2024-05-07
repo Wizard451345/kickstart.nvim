@@ -182,20 +182,20 @@ return {
 				-- May need to install manually as shown in MY README! Or install from source and use the cmd option below!
 
 				-- NOTE: Use `gc` in Visual to uncomment!
-				-- lua_ls = {
-				-- 	-- cmd = {...},
-				-- 	-- filetypes = { ...},
-				-- 	-- capabilities = {},
-				-- 	settings = {
-				-- 		Lua = {
-				-- 			completion = {
-				-- 				callSnippet = "Replace",
-				-- 			},
-				-- 			-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-				-- 			-- diagnostics = { disable = { 'missing-fields' } },
-				-- 		},
-				-- 	},
-				-- },
+				lua_ls = {
+					-- cmd = {...},
+					-- filetypes = { ...},
+					-- capabilities = {},
+					settings = {
+						Lua = {
+							completion = {
+								callSnippet = "Replace",
+							},
+							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+							diagnostics = { disable = { "missing-fields" } },
+						},
+					},
+				},
 			}
 			-- WARN: Verify that this command is in right spot, and comment if Mason works
 			-- out of the box!
