@@ -33,4 +33,5 @@ return {
   --]]
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
+
 -- vim: ts=2 sts=2 sw=2 et
