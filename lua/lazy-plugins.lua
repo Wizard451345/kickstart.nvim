@@ -13,7 +13,7 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
-	-- `opts = {}` forces plguin to load
+	-- `opts = {}` forces plugin to load
 
 	-- "gc" to comment visual regions/lines!
 	{ "numToStr/Comment.nvim", opts = {} },
@@ -72,7 +72,7 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 -- WARN: CHECK FOR ERRORS. Not tested yet!
 
 --NOTE: Not a plugin bruh --> TO INIT.LUA??
---require "kickstart.plugins.health"
+--require "kickstart.plugins.health" HEALTH IN INIT.LUA. (Has not plugins)
 --require "custom.options"
 --require "custom.autocmds"
 --require "custom.keymaps"

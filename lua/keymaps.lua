@@ -2,7 +2,7 @@
 -- See `:help vim.keymap.set()`
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.keymap.set( "n", "<Esc>" , "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Remap for dealing with word wrap
 -- vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -35,7 +35,8 @@ vim.keymap.set("n", "<leader>bs", vim.cmd.BufferLinePick, { desc = "Select Buffe
 vim.keymap.set("n", "<leader>H", vim.cmd.Dashboard, { desc = "Open Dashboard" })
 
 -- Lazy
-vim.keymap.set("n", "<leader>L", "<Cmd>:Lazy<CR>", {desc = "Lazy Dashboard"})
+vim.keymap.set("n", "<leader>L", "<Cmd>:Lazy<CR>", { desc = "Lazy Dashboard" })
+vim.keymap.set("n", "<leader>M", "<Cmd>:Mason<CR>", { desc = "Mason Dashboard" })
 -- NOTE: End of Personal Shortcuts
 
 -- vim: ts=2 sts=2 sw=2 et
