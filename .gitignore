@@ -5,3 +5,5 @@ nvim
 
 spell/
 lazy-lock.json
+init.sublime-workspace
+project.sublime-workspace
