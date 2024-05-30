@@ -25,7 +25,8 @@ vim.keymap.set("n", "<leader>cT", "<Cmd>:tabe term://zsh<CR>", { desc = "Open ZS
 vim.keymap.set("n", "<leader>f", vim.cmd.NvimTreeToggle, { desc = "File Explorer" })
 
 -- buffer shortcuts, powered by BufferLine
-vim.keymap.set("n", "<leader>bN", vim.cmd.tabe, { desc = "Open New Buffer" })
+vim.keymap.set("n", "<leader>bT", vim.cmd.tabe, { desc = "Open New TAB" })
+
 vim.keymap.set("n", "<leader>bn", vim.cmd.BufferLineCycleNext, { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>bp", vim.cmd.BufferLineCyclePrev, { desc = "Previous Buffer" })
 vim.keymap.set("n", "<leader>bc", vim.cmd.BufferLinePickClose, { desc = "Close Buffer" })

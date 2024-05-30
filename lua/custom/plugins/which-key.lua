@@ -1,7 +1,7 @@
 return {
   {
     "folke/which-key.nvim",
-    event = "VimEnter",
+    event = "VimEnter", -- NOTE: LOADS UNTIL VimEnter Event
     config = function()
       -- Document existing key chains
       require("which-key").register({
@@ -35,3 +35,4 @@ return {
 -- required for visual <leader>hs (hunk stage) to work
 
 -- vim: ts=2 sts=2 sw=2 et
+

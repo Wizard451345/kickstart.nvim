@@ -27,7 +27,9 @@ TODO:
   ```lua
   require 'lspconfig'.lua_ls.setup {}
   ``` 
-   > this can actually work with most languages as well! 
+   > this can actually work with most languages as well!
+   > If not work. May have link the binary to location. See [HERE](https://github.com/williamboman/mason.nvim/issues/1602)
+  
   > LSP - BASH: For ARM, installed via the **NPM** package manager. Once installed you can add the following command to the LSP section:
   ```lua
   vim.api.nvim_create_autocmd('FileType', {
