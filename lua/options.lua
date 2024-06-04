@@ -5,7 +5,7 @@
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.opt.mouse = "a"
@@ -77,5 +77,4 @@ vim.o.termguicolors = true
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
-vim.opt.foldenable = "false"
-
+vim.opt.foldenable = false
