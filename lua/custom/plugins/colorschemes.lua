@@ -20,6 +20,7 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
+			require("custom.plugins.theme.catppuccin")
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
