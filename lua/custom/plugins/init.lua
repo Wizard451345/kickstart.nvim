@@ -4,6 +4,7 @@
 -- See the kickstart.nvim README for more information
 
 
+
 return {
 
   -- Git related plugins
@@ -11,7 +12,7 @@ return {
   -- "tpope/vim-rhubarb",
 
   -- TODO: Move to AFTER FOLDER?? But HOW TO MOVE THERE??
- -- "gc" to comment visual regions/lines
+  -- "gc" to comment visual regions/lines
 
   "norcalli/nvim-colorizer.lua",
   "andweeb/presence.nvim",

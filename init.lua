@@ -1,7 +1,5 @@
---  WARN: STILL IN PROGRESS.
---  TODO: IGNORE AFTER and PLUGIN
+--  TODO: SIMPLIFY, REMOVE COMMENTS, REORDER and FIX LSP again.
 
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
@@ -20,6 +18,8 @@ require("lazy-bootstrap")
 
 -- [[ Configure and Installs Plugins ]]
 require("lazy-plugins")
+
+-- require("custom.plugins.lsp.lsp")
 
 -- [[ Health]]
 require("kickstart.plugins.health")
