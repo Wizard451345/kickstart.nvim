@@ -23,7 +23,7 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 	require("custom.plugins.neogit"),
 	require("custom.plugins.which-key"),
 	require("custom.plugins.telescope"),
-	require("custom.plugins.lspconfig"),
+	require("custom.plugins.lsp"),
 	require("custom.plugins.conform"),
 	require("custom.plugins.cmp"),
 	require("custom.plugins.colorschemes"),

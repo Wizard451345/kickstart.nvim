@@ -1,5 +1,5 @@
 return {
-  {                   -- Autocompletion
+  {
     -- Autoformat by stevearc/conform.nvim not added. Will ignore from master
     "hrsh7th/nvim-cmp", --epic auto complete tab
     event = "InsertEnter",
@@ -39,7 +39,7 @@ return {
       local luasnip = require("luasnip")
       luasnip.config.setup({})
 
-      cmp.setup({
+      cmp.setup{
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -48,7 +48,7 @@ return {
         completion = { completeopt = "menu,menuone,noinsert" },
 
         -- TODO: READ ins-completion!!!
-        mapping = cmp.mapping.preset.insert({
+        mapping = cmp.mapping.preset.insert{
           -- [n]ext and [p]rev item
           -- ["<C-n>"] = cmp.mapping.select_next_item(),
           -- ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -82,13 +82,13 @@ return {
 
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-        }),
+        },
         sources = {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
         },
-      })
+      }
     end,
   },
 }
