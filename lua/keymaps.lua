@@ -21,8 +21,8 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 -- File Explorer shortcut
 vim.keymap.set("n", "<leader>cP", "<Cmd>:tabe term://powershell<CR>", { desc = "Open PS in new tab" })
 vim.keymap.set("n", "<leader>cT", "<Cmd>:tabe term://zsh<CR>", { desc = "Open ZSH in new tab" })
--- NOTE: F by itself is better
-vim.keymap.set("n", "<leader>f", vim.cmd.NvimTreeToggle, { desc = "File Explorer" })
+-- NOTE: I now like the backslash, with NO LEADER
+vim.keymap.set("n", "\\", vim.cmd.NvimTreeToggle, { desc = "File Explorer" })
 
 -- buffer shortcuts, powered by BufferLine
 vim.keymap.set("n", "<leader>bT", vim.cmd.tabe, { desc = "Open New TAB" })
@@ -31,6 +31,7 @@ vim.keymap.set("n", "<leader>bn", vim.cmd.BufferLineCycleNext, { desc = "Next Bu
 vim.keymap.set("n", "<leader>bp", vim.cmd.BufferLineCyclePrev, { desc = "Previous Buffer" })
 vim.keymap.set("n", "<leader>bc", vim.cmd.BufferLinePickClose, { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>bs", vim.cmd.BufferLinePick, { desc = "Select Buffer" })
+vim.keymap.set("n", "<leader>bcO", vim.cmd.BufferLineCloseOthers, { desc = "Close Other Buffers" })
 
 -- Dashboard shortcut
 vim.keymap.set("n", "<leader>H", vim.cmd.Dashboard, { desc = "Open Dashboard" })
@@ -38,6 +39,8 @@ vim.keymap.set("n", "<leader>H", vim.cmd.Dashboard, { desc = "Open Dashboard" })
 -- Lazy
 vim.keymap.set("n", "<leader>L", "<Cmd>:Lazy<CR>", { desc = "Lazy Dashboard" })
 vim.keymap.set("n", "<leader>M", "<Cmd>:Mason<CR>", { desc = "Mason Dashboard" })
+
+vim.keymap.set("n", "<leader>ci", vim.cmd.LspInfo, { desc = "LSP [C]ode [I]nfo" })
 -- NOTE: End of Personal Shortcuts
 
 -- vim: ts=2 sts=2 sw=2 et
