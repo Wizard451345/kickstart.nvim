@@ -17,6 +17,8 @@ return {
   "norcalli/nvim-colorizer.lua",
   "andweeb/presence.nvim",
 
+  "github/copilot.vim",
+
 }
 
 -- vim: ts=2 sts=2 sw=2 et
