@@ -11,7 +11,7 @@ require("options")
 require("keymaps")
 
 -- [[ Autocmds]]
-require("custom.autocmds")
+require("wiz.autocmds")
 
 -- [[ Installs `lazy.nvim` plugin manager]]
 require("lazy-bootstrap")
@@ -19,7 +19,7 @@ require("lazy-bootstrap")
 -- [[ Configure and Installs Plugins ]]
 require("lazy-plugins")
 
--- require("custom.plugins.lsp.lsp")
+-- require("wiz.plugins.lsp.lsp")
 
 -- [[ Health]]
 require("kickstart.plugins.health")

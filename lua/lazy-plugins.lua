@@ -3,7 +3,7 @@
 --    as they will be available in your neovim runtime.
 require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setup function.
 
-	-- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
+	-- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/wiz/plugins/*.lua`
 	--    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
 	--    up-to-date with whatever is in the kickstart repo. Make sure the subdirs are in lua
 	--
@@ -19,28 +19,28 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 	{ "numToStr/Comment.nvim", opts = {} },
 
 	--TODO: ADD EACH FILE? NO INIT?? OR MAKE "REQUIRES" in PLGUINS/INIT
-	require("custom.plugins.gitsigns"),
-	require("custom.plugins.neogit"),
-	require("custom.plugins.which-key"),
-	require("custom.plugins.telescope"),
-	require("custom.plugins.lsp"),
-	require("custom.plugins.conform"),
-	require("custom.plugins.cmp"),
-	require("custom.plugins.colorschemes"),
-	require("custom.plugins.todo-comments"),
-	require("custom.plugins.mini-nvim"),
-	require("custom.plugins.treesitter"),
+	require("wiz.plugins.gitsigns"),
+	require("wiz.plugins.neogit"),
+	require("wiz.plugins.which-key"),
+	require("wiz.plugins.telescope"),
+	require("wiz.plugins.lsp"),
+	require("wiz.plugins.conform"),
+	require("wiz.plugins.cmp"),
+	require("wiz.plugins.colorschemes"),
+	require("wiz.plugins.todo-comments"),
+	require("wiz.plugins.mini-nvim"),
+	require("wiz.plugins.treesitter"),
 
-	require("custom.plugins.nvim-tree"),
-	require("custom.plugins.bufferline"),
-	require("custom.plugins.autoclose"),
-	require("custom.plugins.dashboard"),
-	require("custom.plugins.harpoon"),
-	require("custom.plugins.lualine"),
-	require("custom.plugins.none-ls"),
-	require("custom.plugins.noice"),
-	require("custom.plugins.init"),
-	--  require "custom.plugins.comment",
+	require("wiz.plugins.nvim-tree"),
+	require("wiz.plugins.bufferline"),
+	require("wiz.plugins.autoclose"),
+	require("wiz.plugins.dashboard"),
+	require("wiz.plugins.harpoon"),
+	require("wiz.plugins.lualine"),
+	require("wiz.plugins.none-ls"),
+	require("wiz.plugins.noice"),
+	require("wiz.plugins.init"),
+	--  require "wiz.plugins.comment",
 
 	require("kickstart.plugins.autoformat"),
 	require("kickstart.plugins.debug"),
@@ -73,9 +73,9 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 
 --NOTE: Not a plugin bruh --> TO INIT.LUA??
 --require "kickstart.plugins.health" HEALTH IN INIT.LUA. (Has not plugins)
---require "custom.options"
---require "custom.autocmds"
---require "custom.keymaps"
+--require "wiz.options"
+--require "wiz.autocmds"
+--require "wiz.keymaps"
 --[[
    require("kickstart.plugins.autoformat")
 
@@ -87,7 +87,7 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 
    require("kickstart.plugins.lint")
 
-   require("custom.options")
+   require("wiz.options")
    --]]
 
 -- TODO: options.lua. See Neovim #3 Video

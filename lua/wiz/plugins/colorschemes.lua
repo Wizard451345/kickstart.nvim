@@ -20,9 +20,14 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("custom.plugins.theme.catppuccin")
+			require("wiz.plugins.theme.catppuccin")
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
+	},
+	{
+		"folke/tokyonight.nvim",
+		name = "tokyonight",
+		priority = 500,
 	},
 }
 

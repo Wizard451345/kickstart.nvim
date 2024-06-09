@@ -6,10 +6,10 @@ capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp"
 local lspconfig = require("lspconfig")
 
 lspconfig.html.setup({
-  capabilities = capabilities,
+	capabilities = capabilities,
 })
 
-require("custom.plugins.lsp.lsp")
+require("wiz.plugins.lsp.lsp")
 
 vim.cmd(":LspStart")
 -- TODO: completion works but documentation does not.
