@@ -31,7 +31,7 @@ vim.keymap.set("n", "<leader>bn", vim.cmd.BufferLineCycleNext, { desc = "Next Bu
 vim.keymap.set("n", "<leader>bp", vim.cmd.BufferLineCyclePrev, { desc = "Previous Buffer" })
 vim.keymap.set("n", "<leader>bc", vim.cmd.BufferLinePickClose, { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>bs", vim.cmd.BufferLinePick, { desc = "Select Buffer" })
-vim.keymap.set("n", "<leader>bcO", vim.cmd.BufferLineCloseOthers, { desc = "Close Other Buffers" })
+vim.keymap.set("n", "<leader>bC", vim.cmd.BufferLineCloseOthers, { desc = "Close Other Buffers" })
 
 -- Dashboard shortcut
 vim.keymap.set("n", "<leader>H", vim.cmd.Dashboard, { desc = "Open Dashboard" })

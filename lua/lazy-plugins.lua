@@ -40,6 +40,9 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 	require("wiz.plugins.none-ls"),
 	require("wiz.plugins.noice"),
 	require("wiz.plugins.init"),
+	require("wiz.plugins.colorizer"),
+	require("wiz.plugins.trouble"),
+	require("wiz.plugins.scrollEOF"),
 	--  require "wiz.plugins.comment",
 
 	require("kickstart.plugins.autoformat"),

@@ -12,4 +12,5 @@ lspconfig.html.setup({
 require("wiz.plugins.lsp.lsp")
 
 vim.cmd(":LspStart")
+vim.cmd(":set ts=2")
 -- TODO: completion works but documentation does not.
