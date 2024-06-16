@@ -98,6 +98,13 @@ return {
       end
 
       vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
+      vim.api.nvim_create_user_command("TelescopeDotFiles", function ()
+        require("telescope.builtin").find_files({
+          prompt_title = "Dotfiles",
+          cwd = vim.fn.stdpath("config"),
+        })
+      end,
+      {})
 
       -- See `:help telescope.builtin`
       -- NOTE: There are changes from master here. [line 367]
@@ -128,9 +135,7 @@ return {
         })
       end, { desc = "[S]earch [/] in Open Files" })
 
-      vim.keymap.set("n", "<leader>sn", function()
-        builtin.find_files({ cwd = vim.fn.stdpath("config") })
-      end, { desc = "[S]earch [N]eovim files" })
+      vim.keymap.set("n", "<leader>sn", "<cmd>TelescopeDotFiles<cr>", { desc = "[S]earch [N]eovim files" })
 
       -- NOTE: Personal
       vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles" })

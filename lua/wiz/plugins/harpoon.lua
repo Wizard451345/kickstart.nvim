@@ -1,9 +1,9 @@
 return {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
+  "ThePrimeagen/harpoon",
+  branch = "harpoon2",
+  dependencies = { "nvim-lua/plenary.nvim" },
 
-  config = function ()
+  config = function()
     local harpoon = require("harpoon")
     harpoon:setup({})
 
@@ -16,15 +16,15 @@ return {
       end
 
       require("telescope.pickers")
-        .new({}, {
-          prompt_title = "Harpoon",
-          finder = require("telescope.finders").new_table({
-            results = file_paths,
-          }),
-          previewer = conf.file_previewer({}),
-          sorter = conf.generic_sorter({}),
-        })
-        :find()
+          .new({}, {
+            prompt_title = "Harpoon",
+            finder = require("telescope.finders").new_table({
+              results = file_paths,
+            }),
+            previewer = conf.file_previewer({}),
+            sorter = conf.generic_sorter({}),
+          })
+          :find()
     end
 
     -- Harpoon Shortcuts
@@ -32,7 +32,7 @@ return {
       toggle_telescope(harpoon:list())
     end, { desc = "Open harpoon window" })
     vim.keymap.set("n", "<leader>cA", function()
-      harpoon:list():append()
+      harpoon:list():add()
     end, { desc = "Harpoon Mark File" })
     -- vim.keymap.set("n", "<leader>cH", function()
     --  harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -43,7 +43,6 @@ return {
     vim.keymap.set("n", "<leader><Right>", function()
       harpoon:list():next()
     end, { desc = "Harpoon CycleNext" })
-
   end,
 }
 

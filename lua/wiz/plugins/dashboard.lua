@@ -1,5 +1,5 @@
 return {
-	{
+  {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     config = function()
@@ -16,10 +16,11 @@ return {
               action = "Telescope find_files cwd=D:\\",
               key = "f",
             },
+            -- NOTE: This actually works on both machines!!!
             {
               desc = "Config [WIN]",
               -- action "e " .. os.getenv("HOMEPATH") .. "\\AppData\\Local\\nvim\\init.lua"
-              action = "e C:\\Users\\marco\\AppData\\Local\\nvim\\init.lua",
+              action = "TelescopeDotFiles",
               key = "e",
             },
             { desc = "Config [LIN]", action = "e ~/config/nvim/init.lua", key = "E" },
