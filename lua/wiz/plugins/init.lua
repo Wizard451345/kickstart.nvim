@@ -1,8 +1,4 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
-
+-- NOTE: Just super basic plugins.
 return {
 	{
 		-- Git related plugins
@@ -15,6 +11,6 @@ return {
 		"andweeb/presence.nvim",
 
 		"github/copilot.vim",
-	}
+	},
 }
 -- vim: ts=2 sts=2 sw=2 et

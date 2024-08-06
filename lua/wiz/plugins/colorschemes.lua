@@ -29,6 +29,7 @@ return {
 		name = "tokyonight",
 		priority = 500,
 	},
+	{ "EdenEast/nightfox.nvim" },
 }
 
 -- vim: ts=2 sts=2 sw=2 et
