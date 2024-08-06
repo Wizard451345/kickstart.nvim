@@ -74,7 +74,7 @@ vim.opt.hlsearch = false
 vim.o.termguicolors = true
 
 --See treesitter for folding
-vim.opt.foldmethod = "indent"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
-vim.opt.foldenable = false
+vim.opt.foldmethod = "indent"                        -- Indent based folding
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Treesitter folding
+vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()" -- Treesitter folding
+vim.opt.foldenable = false                           -- Disable folding by default

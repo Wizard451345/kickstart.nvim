@@ -32,6 +32,7 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 	require("wiz.plugins.treesitter"),
 
 	require("wiz.plugins.nvim-tree"),
+	require("wiz.plugins.undotree"),
 	require("wiz.plugins.bufferline"),
 	require("wiz.plugins.autoclose"),
 	require("wiz.plugins.dashboard"),
@@ -43,6 +44,8 @@ require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setu
 	require("wiz.plugins.colorizer"),
 	require("wiz.plugins.trouble"),
 	require("wiz.plugins.scrollEOF"),
+	require("wiz.plugins.markview"),
+	require("wiz.plugins.cmp-spell"),
 	--  require "wiz.plugins.comment",
 
 	require("kickstart.plugins.autoformat"),

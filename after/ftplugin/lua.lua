@@ -29,7 +29,7 @@ require("lspconfig").lua_ls.setup({
 
 require("wiz.plugins.lsp.lsp")
 
-vim.cmd(":LspStart")
+-- vim.cmd(":LspStart")
 
 local bufname = vim.api.nvim_buf_get_name(0)
 if bufname:find("nvim") then

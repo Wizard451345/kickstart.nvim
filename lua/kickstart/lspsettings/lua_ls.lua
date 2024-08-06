@@ -1,4 +1,5 @@
 -- https://luals.github.io/wiki/settings/
+-- WARN: UNUSED
 return {
 	settings = {
 		Lua = {

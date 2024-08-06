@@ -1,4 +1,8 @@
---  TODO: SIMPLIFY, REMOVE COMMENTS, REORDER and FIX LSP again.
+-- TODO:
+-- FIX CODE FOLDING. zc zC closes similar indents but have to close twice.
+-- Organize which-keys and keymaps for better experience
+-- Add more snippets
+-- cmp not loading sometimes. lua_ls timeout / slow?
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

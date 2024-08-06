@@ -14,6 +14,21 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics [Q]uickfix list" })
 
+-- TIP: Disable arrow keys in normal mode
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+
+-- Keybinds to make split navigation easier.
+--  Use CTRL+<hjkl> to switch between windows
+--
+--  See `:help wincmd` for a list of all window commands
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
 -- Exit termianl mode in builtin terminal with this shourtcut! Could not work with all.
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
@@ -21,8 +36,11 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 -- File Explorer shortcut
 vim.keymap.set("n", "<leader>cP", "<Cmd>:tabe term://powershell<CR>", { desc = "Open PS in new tab" })
 vim.keymap.set("n", "<leader>cT", "<Cmd>:tabe term://zsh<CR>", { desc = "Open ZSH in new tab" })
+vim.keymap.set("n", "<leader>cS", "<Cmd>:LspStop<CR>", { desc = "Code LSP Stop" })
+vim.keymap.set("n", "<leader>cR", "<Cmd>:LspRestart<CR>", { desc = "Code LSP Restart" })
 -- NOTE: I now like the backslash, with NO LEADER
 vim.keymap.set("n", "\\", vim.cmd.NvimTreeToggle, { desc = "File Explorer" })
+vim.keymap.set("n", "<leader>tu", vim.cmd.UndotreeToggle, { desc = "[T]oggle [U]ndo Tree" })
 
 -- buffer shortcuts, powered by BufferLine
 vim.keymap.set("n", "<leader>bT", vim.cmd.tabe, { desc = "Open New TAB" })

@@ -8,15 +8,14 @@ There is a lot of stuff to do that I don't know about so. I'd dumb lol.
 This has:
 
 - [x] Everything in Kickstart, including the `Lazy.nvim` package manager.
-- [x] I don't know the rest because I forgot.
+- [x] Also some plugins from Kickstart with some additional plugins.
 
 ## What I am working on right now?
 
-I am currently doing Lua so I can understand what I am doing, also LSP does not work on my end, likely as a result of using an ARM based computer. Yeah. It is because of ARM :( F
+I am currently doing Lua so I can understand what I am doing. I feel like I am now 'smart enough' to at least edit this configuration on my own. So expect changes soon :)
+I want to say thanks to TJ for helping me learn this. :) 
 
 TODO:
-- [ ] I now feel that I should make this repo as my own now, I feel like I am now 'smart enough' to at least edit this configuration on my own.
-  I want to say thanks to TJ for helping me learn this. :) 
 - [x] I want there to be an autoformatter. Autocomplete the `{} [] and quotes` maybe I could create a request or plug-in my own?
   > Used autoclose.nvim. Still need to tweak a little more. Especially for HTML's' < >.
 - [x] Finish organizing plugins and lsp's etc. Into their respective directories. Especially now that I know how most things work.
@@ -49,12 +48,15 @@ I am currently practicing git commands right now. This repository has 3 branches
 
 - The **Main** Branch is my personal configuration. To be honest, it is very similar to the Master Branch. But with slight personal touches. It is not too special though.
 
-- The **Simple** branch is basically the Master (original) Branch. Single file, but my my own plugins and options. Why? idk.
+- The **Simple** branch is basically the Master (original) Branch but with my plugins. Will likely not be updated.
 
-- Not Implemented yet. I am thinking on creating another branch for Windows, as I also use it and it usally conflicts!
-
-There are some things that could be required, will depend on which OS you use! Run `:checkhealth` and `:messages` when needed. 
+There are some things that could be required, will depend on which OS you use! Run `:checkhealth` and `:messages` when needed.
+Make sure to read kickstart's README.md for more information. Likely missing some sort of dependecy issue or something. Keep your Neovim up to date!
 
 ## My Main goals with this project
 
-My main goal for this project is to understand on what is going on. I have no idea on what going on, therefore I am also trying to understand the lua programming language. Additionally, I want to configure my Neovim editor to make it my own and tell people that I use Neovim btw. As a mentioned before, this project is also for practicing Git.
+My main goal for this project is to understand on what is going on. I have no idea on what going on, therefore I am also trying to understand the lua programming language.
+Additionally, I want to configure my Neovim editor to make it my own and tell people that I use Neovim btw.
+
+As a mentioned before, this project is also for practicing Git. I forgot how to make pull requests and stuff. So I am trying to remember how to do that.
+
