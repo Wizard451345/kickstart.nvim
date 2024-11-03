@@ -1,4 +1,5 @@
--- NOTE: Code from ilias777/nvim !
+-- NOTE: Code from ilias777/nvim
+-- TODO: Does not work yet also read more docs!
 
 local ls = require('luasnip')
 local s = ls.s -- Snippet

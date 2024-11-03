@@ -28,6 +28,7 @@ return {
         { "<leader>t", group = "[T]oggle" },
         { "<leader>w", group = "[W]orkspace" },
         { "<leader>b", group = "[B]uffers" },
+        -- BUG: Does not appear in menu.
         { "<leader>h", group = "Git [H]unk",        mode = { "n", "v" } },
         { "<leader>x", group = "Trouble Diagnostic" },
       })

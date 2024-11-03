@@ -36,11 +36,29 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 -- File Explorer shortcut
 vim.keymap.set("n", "<leader>cP", "<Cmd>:tabe term://powershell<CR>", { desc = "Open PS in new tab" })
 vim.keymap.set("n", "<leader>cT", "<Cmd>:tabe term://zsh<CR>", { desc = "Open ZSH in new tab" })
-vim.keymap.set("n", "<leader>cS", "<Cmd>:LspStop<CR>", { desc = "Code LSP Stop" })
-vim.keymap.set("n", "<leader>cR", "<Cmd>:LspRestart<CR>", { desc = "Code LSP Restart" })
+
+vim.keymap.set("n", "<leader>cS", function()
+  vim.cmd("LspStop")
+  vim.cmd("echo('Stopped LSP')")
+end, { desc = "Code LSP Stop" })
+
+vim.keymap.set("n", "<leader>cR", function()
+  vim.cmd("LspRestart")
+  vim.cmd("echo('Restarting LSP')")
+end, { desc = "Code LSP Restart" })
+
 -- NOTE: I now like the backslash, with NO LEADER
 vim.keymap.set("n", "\\", vim.cmd.NvimTreeToggle, { desc = "File Explorer" })
 vim.keymap.set("n", "<leader>tu", vim.cmd.UndotreeToggle, { desc = "[T]oggle [U]ndo Tree" })
+
+-- NOTE: Spelling
+-- vim.keymap.del("n", "z=")
+vim.keymap.set(
+  "n",
+  "s",
+  "<Cmd>:Telescope spell_suggest<CR>",
+  { noremap = true, silent = true, desc = "Open Spelling Menu" }
+)
 
 -- buffer shortcuts, powered by BufferLine
 vim.keymap.set("n", "<leader>bT", vim.cmd.tabe, { desc = "Open New TAB" })
@@ -50,6 +68,7 @@ vim.keymap.set("n", "<leader>bp", vim.cmd.BufferLineCyclePrev, { desc = "Previou
 vim.keymap.set("n", "<leader>bc", vim.cmd.BufferLinePickClose, { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>bs", vim.cmd.BufferLinePick, { desc = "Select Buffer" })
 vim.keymap.set("n", "<leader>bC", vim.cmd.BufferLineCloseOthers, { desc = "Close Other Buffers" })
+-- TODO: Add 'New Buffer' command here
 
 -- Dashboard shortcut
 vim.keymap.set("n", "<leader>H", vim.cmd.Dashboard, { desc = "Open Dashboard" })
@@ -60,8 +79,10 @@ vim.keymap.set("n", "<leader>M", "<Cmd>:Mason<CR>", { desc = "Mason Dashboard" }
 
 vim.keymap.set("n", "<leader>ci", vim.cmd.LspInfo, { desc = "LSP [C]ode [I]nfo" })
 
-vim.keymap.set("n", "z=", "<Cmd>:Telescope spell_suggest<CR>")
+-- WARN: Testing
+-- vim.keymap.set("n", "s", "<Cmd>:Telescope spell_suggest<CR>")
 
 -- NOTE: End of Personal Shortcuts
 
 -- vim: ts=2 sts=2 sw=2 et
+

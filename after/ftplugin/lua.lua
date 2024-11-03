@@ -1,9 +1,5 @@
 -- NOTE: actually works!
-
--- TODO: Move colorizer to html/css only!
--- require("colorizer").setup()
--- WARN: Verify that this command is in right spot, and comment if Mason works
--- out of the box!
+-- Made this as Mason does not work on all of my machines.
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
@@ -30,7 +26,9 @@ require("lspconfig").lua_ls.setup({
 require("wiz.plugins.lsp.lsp")
 
 -- vim.cmd(":LspStart")
+vim.cmd(":set ts=2")
 
+-- Find name of buffer and if it is nvim, set some options
 local bufname = vim.api.nvim_buf_get_name(0)
 if bufname:find("nvim") then
 	vim.opt_local.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]

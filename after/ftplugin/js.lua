@@ -10,5 +10,5 @@ lspconfig.tsserver.setup({
 
 require("wiz.plugins.lsp.lsp")
 
-vim.cmd(":LspStart")
+-- vim.cmd(":LspStart")
 vim.cmd(":set ts=2")

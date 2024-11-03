@@ -5,3 +5,5 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require("lspconfig").cssls.setup({
   capabilities = capabilities,
 })
+
+require("colorizer").setup()
