@@ -1,6 +1,6 @@
 -- NOTE: actually works!
 -- Made this as Mason does not work on all of my machines.
-
+if not vim.g.vscode then 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
@@ -38,5 +38,6 @@ if bufname:find("nvim") then
 	end
 
 	vim.opt_local.suffixesadd:prepend({ ".lua", "/init.lua" })
+end
 end
 -- vim: ts=2 sts=2 sw=2 et

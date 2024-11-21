@@ -12,9 +12,6 @@ return {
       -- used for completion, annotations and signatures of Neovim apis
       { "folke/neodev.nvim",       opts = {} },
     },
-    config = function()
-      vim.cmd("echo Hi!")
-    end,
   },
 }
 

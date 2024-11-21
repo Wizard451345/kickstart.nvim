@@ -3,73 +3,75 @@
 --    as they will be available in your neovim runtime.
 require("lazy").setup({ --look inside lua, LAZY,and then INIT.LUA. Then run setup function.
 
-	-- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/wiz/plugins/*.lua`
-	--    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-	--    up-to-date with whatever is in the kickstart repo. Make sure the subdirs are in lua
-	--
-	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-	--
-	-- Best way to modularize config. Imports lua/config/plugins/*.lua
+  -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/wiz/plugins/*.lua`
+  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
+  --    up-to-date with whatever is in the kickstart repo. Make sure the subdirs are in lua
+  --
+  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
+  --
+  -- Best way to modularize config. Imports lua/config/plugins/*.lua
 
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
-	-- `opts = {}` forces plugin to load
+  -- `opts = {}` forces plugin to load
 
-	-- "gc" to comment visual regions/lines!
-	{ "numToStr/Comment.nvim", opts = {} },
+  -- "gc" to comment visual regions/lines!
+  { "numToStr/Comment.nvim", opts = {} },
 
-	--TODO: ADD EACH FILE? NO INIT?? OR MAKE "REQUIRES" in PLGUINS/INIT
-	require("wiz.plugins.gitsigns"),
-	require("wiz.plugins.neogit"),
-	require("wiz.plugins.which-key"),
-	require("wiz.plugins.telescope"),
-	require("wiz.plugins.lsp"),
-	require("wiz.plugins.conform"),
-	require("wiz.plugins.cmp"),
-	require("wiz.plugins.colorschemes"),
-	require("wiz.plugins.todo-comments"),
-	require("wiz.plugins.mini-nvim"),
-	require("wiz.plugins.treesitter"),
-
-	require("wiz.plugins.nvim-tree"),
-	require("wiz.plugins.undotree"),
-	require("wiz.plugins.bufferline"),
-	require("wiz.plugins.autoclose"),
-	require("wiz.plugins.dashboard"),
-	require("wiz.plugins.harpoon"),
-	require("wiz.plugins.lualine"),
-	require("wiz.plugins.none-ls"),
-	require("wiz.plugins.noice"),
-	require("wiz.plugins.init"),
-	require("wiz.plugins.colorizer"),
-	require("wiz.plugins.trouble"),
-	require("wiz.plugins.scrollEOF"),
-	require("wiz.plugins.markview"),
-	require("wiz.plugins.cmp-spell"),
-	--  require "wiz.plugins.comment",
-
-	require("kickstart.plugins.autoformat"),
-	require("kickstart.plugins.debug"),
-	require("kickstart.plugins.indent_line"),
-	require("kickstart.plugins.lint"),
+  --TODO: ADD EACH FILE? NO INIT?? OR MAKE "REQUIRES" in PLGUINS/INIT
+  { import = "wiz.plugins.default", cond = (function () return not vim.g.vscode end)},
+  { import = "wiz.plugins.vscode",    cond = (function() return vim.g.vscode end) },
+  -- require("wiz.plugins.gitsigns"),
+  -- require("wiz.plugins.neogit"),
+  -- require("wiz.plugins.which-key"),
+  -- require("wiz.plugins.telescope"),
+  -- require("wiz.plugins.lsp"),
+  -- require("wiz.plugins.conform"),
+  -- require("wiz.plugins.cmp"),
+  -- require("wiz.plugins.colorschemes"),
+  -- require("wiz.plugins.todo-comments"),
+  -- require("wiz.plugins.mini-nvim"),
+  -- require("wiz.plugins.treesitter"),
+  --
+  -- require("wiz.plugins.nvim-tree"),
+  -- require("wiz.plugins.undotree"),
+  -- require("wiz.plugins.bufferline"),
+  -- require("wiz.plugins.autoclose"),
+  -- require("wiz.plugins.dashboard"),
+  -- require("wiz.plugins.harpoon"),
+  -- require("wiz.plugins.lualine"),
+  -- require("wiz.plugins.none-ls"),
+  -- require("wiz.plugins.noice"),
+  -- require("wiz.plugins.init"),
+  -- require("wiz.plugins.colorizer"),
+  -- require("wiz.plugins.trouble"),
+  -- require("wiz.plugins.scrollEOF"),
+  -- require("wiz.plugins.markview"),
+  -- require("wiz.plugins.cmp-spell"),
+  -- --  require "wiz.plugins.comment",
+  --
+  -- require("kickstart.plugins.autoformat"),
+  -- require("kickstart.plugins.debug"),
+  -- require("kickstart.plugins.indent_line"),
+  -- require("kickstart.plugins.lint"),
 }, {
-	ui = {
-		icons = vim.g.have_nerd_font and {} or {
-			cmd = "⌘",
-			config = "🛠",
-			event = "📅",
-			ft = "📂",
-			init = "⚙",
-			keys = "🗝",
-			plugin = "🔌",
-			runtime = "💻",
-			require = "🌙",
-			source = "📄",
-			start = "🚀",
-			task = "📌",
-			lazy = "💤 ",
-		},
-	},
+  ui = {
+    icons = vim.g.have_nerd_font and {} or {
+      cmd = "⌘",
+      config = "🛠",
+      event = "📅",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      require = "🌙",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
+      lazy = "💤 ",
+    },
+  },
 })
 
 -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart

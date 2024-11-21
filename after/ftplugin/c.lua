@@ -1,3 +1,4 @@
+if not vim.g.vscode then
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
@@ -13,3 +14,4 @@ lspconfig.clangd.setup({
 require("wiz.plugins.lsp.lsp")
 
 vim.cmd(":LspStart")
+end

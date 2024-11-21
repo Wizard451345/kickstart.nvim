@@ -1,3 +1,4 @@
+if not vim.g.vscode then 
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -13,3 +14,4 @@ require("wiz.plugins.lsp.lsp")
 require("colorizer").setup()
 -- vim.cmd(":LspStart")
 vim.cmd(":set ts=2")
+end
