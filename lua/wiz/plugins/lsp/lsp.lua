@@ -1,10 +1,4 @@
---[[
-local lspconfig = require('lspconfig')
-
-lspconfig.lua_ls.setup({})
---]]
---
-
+-- Runs depending on file type in the /after directory
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
   callback = function(event)
@@ -34,8 +28,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
     --  NOTE: Diagnostic Window thing
+
     vim.api.nvim_create_autocmd("CursorHold", {
-      buffer = bufnr,
+      buffer = event.buf,
       callback = function()
         local opts = {
           focusable = false,
@@ -48,6 +43,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.diagnostic.open_float(nil, opts)
       end
     })
+
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client.server_capabilities.documentHighlightProvider then
@@ -78,6 +74,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
       end, "[T]oggle Inlay [H]ints")
     end
+
   end,
 })
 

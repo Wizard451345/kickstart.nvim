@@ -15,10 +15,10 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagn
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics [Q]uickfix list" })
 
 -- TIP: Disable arrow keys in normal mode
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+-- vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+-- vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+-- vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+-- vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -62,14 +62,15 @@ vim.keymap.set(
 
 -- buffer shortcuts, powered by BufferLine
 vim.keymap.set("n", "<leader>bT", vim.cmd.tabe, { desc = "Open New TAB" })
-
+vim.keymap.set("n", "<leader>bN", "<cmd>:enew<CR>", { desc = "New Buffer" })
 vim.keymap.set("n", "<leader>bn", vim.cmd.BufferLineCycleNext, { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>bp", vim.cmd.BufferLineCyclePrev, { desc = "Previous Buffer" })
 vim.keymap.set("n", "<leader>bc", vim.cmd.BufferLinePickClose, { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>bs", vim.cmd.BufferLinePick, { desc = "Select Buffer" })
 vim.keymap.set("n", "<leader>bC", vim.cmd.BufferLineCloseOthers, { desc = "Close Other Buffers" })
--- TODO: Add 'New Buffer' command here
 
+vim.keymap.set("n", "<leader>tc", "gcc", { desc = "Toggle Comment" })
+vim.keymap.set("v", "<leader>tc", "gc", { desc = "Toggle Comment" })
 -- Dashboard shortcut
 vim.keymap.set("n", "<leader>H", vim.cmd.Dashboard, { desc = "Open Dashboard" })
 

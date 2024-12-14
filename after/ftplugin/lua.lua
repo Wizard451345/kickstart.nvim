@@ -1,6 +1,6 @@
 -- NOTE: actually works!
 -- Made this as Mason does not work on all of my machines.
-if not vim.g.vscode then 
+--if not vim.g.vscode then 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
@@ -11,13 +11,24 @@ require("lspconfig").lua_ls.setup({
 		-- filetypes =  {"lua"},
 		capabilities = capabilities,
 		--
-		before_init = require("neodev.lsp").before_init,
 		settings = {
 			Lua = {
 				completion = {
 					callSnippet = "Replace",
 				},
-				diagnostics = { disable = { "missing-fields" } },
+				diagnostics = {
+           disable = { "missing-fields" },
+        },
+      -- Directories to search for Lua files, relative to the workspace root
+      workspace = {
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+        },
+        -- Ignore specific directory
+        ignoreDir = { "node_modules" , ".git", ".vscode" },
+        ignoreSubmodules = true,
+      },
 			},
 		},
 	},
@@ -39,5 +50,5 @@ if bufname:find("nvim") then
 
 	vim.opt_local.suffixesadd:prepend({ ".lua", "/init.lua" })
 end
-end
+--end
 -- vim: ts=2 sts=2 sw=2 et
